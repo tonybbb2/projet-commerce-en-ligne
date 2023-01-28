@@ -1,64 +1,31 @@
 import React, { useState, useEffect } from 'react'
-import { AiOutlineClose } from 'react-icons/ai';
-import { AiOutlineMenu } from 'react-icons/ai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsSearch } from 'react-icons/bs';
+import { CgProfile } from 'react-icons/cg';
 
 export const Navbar = () => {
 
-    const [nav, setNav] = useState(false)
-    const [shadow, setShadsow] = useState(false)
-
-    const handleNav = () => {
-        setNav(!nav);
-    }
-
-    useEffect(() => {
-        const handleShadow = () => {
-            if (window.scrollY > 70) {
-                setShadsow(true)
-            } else {
-                setShadsow(false)
-            }
-        }
-        window.addEventListener('scroll', handleShadow)
-    }, [])
 
     return (
-        <div className={shadow ? 'fixed w-full h-20 shadow-xl z-[100]' : 'fixed w-full h-20 z-[100] bg-[#0f0f0f] text-white'}>
-            <div className='flex justify-between items-center w-full h-full px-2 2xl:px-16'>
-                <div>
-                    <p className='text-3xl uppercase font-bold'>Fitness Rats</p>
+        <div>
+            <div className='flex'>
+                <div className='flex-none w-52 h-20'>
                 </div>
-                <div>
-                    <ul className='hidden md:flex'>
-                        <li className='ml-10 text-sm uppercase hover:border-b'>Men</li>
-                        <li className='ml-10 text-sm uppercase hover:border-b'>Women</li>
-                        <li className='ml-10 text-sm uppercase hover:border-b'>Shop All</li>
-                    </ul>
-                </div>
-                <div className='flex flex-row'>
-                    <BsSearch size={25} />
-                    <AiOutlineShoppingCart size={25} />
-                </div>
-                <div onClick={handleNav} className='md:hidden'>
-                    <AiOutlineMenu size={25} />
-                </div>
-            </div>
-            <div className={nav ? 'md:hidden fixed left-0 top-0 w-full h-screen bg-black/80' : ''}>
-                <div className={nav ? ' fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500' :
-                    'fixed left-[-100%] top-0 p-10 ease-in duration-500'
-                }>
+                <div className='grow flex justify-between items-center w-full h-20 top-0 text-slate-200 rounded-b-[2rem] bg-black px-16 border border-slate-400'>
                     <div>
-                        <div className='flex w-full items-center justify-between'>
-                            <div onClick={handleNav} className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer'>
-                                <AiOutlineClose size={25} />
-                            </div>
-                        </div>
-                        <div className='border-b border-gray-300 my-4'>
-                            <p className='w-[85%] md:w-[90%] py-4'>Construisons quelque chose ensemble!</p>
-                        </div>
+                        <p className='uppercase font-normal text-xl font-sans tracking-tight italic'>FITNESS RATS</p>
                     </div>
+                    <div className='lg:flex px-2 hidden lg:block mr-[50px] font-extrabold'>
+                        <p className='px-2 uppercase text-sm'>Men</p>
+                        <p className='px-2 uppercase text-sm'>Women</p>
+                    </div>
+                    <div className='flex'>
+                        <BsSearch className='text-2xl mr-2'/>
+                        <AiOutlineShoppingCart className='text-2xl mr-2'/>
+                        <CgProfile className='text-2xl'/>
+                    </div>
+                </div>
+                <div className='flex-none w-52 h-20'>
                 </div>
             </div>
         </div>
