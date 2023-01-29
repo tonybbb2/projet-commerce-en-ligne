@@ -1,0 +1,9 @@
+openapi: 3.0.3
+info:
+  title: Projet Integrateur - E-commerce 3.0
+  description: Projet Integrateur - E-commerce
+  version: 1.0.11
+servers:
+  - url: None
+paths:
+  /login: {}
