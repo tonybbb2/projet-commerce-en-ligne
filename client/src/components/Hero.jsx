@@ -7,7 +7,7 @@ export const Hero = () => {
             <section className="p-[5rem] till-desktop:p-[3rem] till-phone:p-[5vw] py-[1.5rem]">
                 <div className="grid-container mx-auto max-w-[var(--container-md-max-width)] relative size-1 ">
                     <div className="tile group alphalete-poster " data-block-index="0">
-                        <div className="relative tile-media-container clipped absolute-tl w-8/12 mx-auto hover:scale-105 transition-all duration-500 cursor-pointer">
+                        <div className="relative tile-media-container clipped absolute-tl w-11/12 mx-auto hover:scale-105 transition-all duration-500 cursor-pointer">
                             <video data-expand="-100" controls="" loop muted autoPlay className="lazyload-fade tile-media tile-video-default  tile-video-has-mobile lazyloading rounded-3xl">
                                 <source src={"https://cdn.shopify.com/videos/c/o/v/ffae4ba3aff04a7ca9788caab7da5714.mp4"} type="video/mp4" />
                             </video>
