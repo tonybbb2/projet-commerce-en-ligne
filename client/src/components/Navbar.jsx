@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsSearch } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
