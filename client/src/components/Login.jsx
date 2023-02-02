@@ -4,8 +4,13 @@ function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    function verifyFields() {
+
+    }
+
     function signIn() {
         // Function to sign in
+        
     }
 
     return (

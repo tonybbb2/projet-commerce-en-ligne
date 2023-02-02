@@ -14,7 +14,7 @@ export const Hero = () => {
                             <p className="text-sm md:text-4xl text-white font-extrabold">TRAIN LIKE A BEAST</p>
                             <p className="text-sm md:text-4xl text-white font-extrabold">LOOK LIKE A BEAUTY</p>
                             <p className="text-white mt-1">Often imitated, never duplicated</p>
-                            <button class="bg-slate-300 bg-opacity-60 hover:text-black hover:bg-white text-white font-extrabold py-2 px-6 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 mt-2">
+                            <button className="bg-slate-300 bg-opacity-60 hover:text-black hover:bg-white text-white font-extrabold py-2 px-6 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 mt-2">
                                 SHOP NOW
                             </button>
                         </div>

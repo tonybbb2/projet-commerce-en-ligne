@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsSearch } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
@@ -22,7 +22,7 @@ export const Navbar = () => {
 
     return (
         <div className='flex justify-center'>
-            <div className={ scroll ? 'flex justify-between items-center mx-auto md:w-2/3 h-10 fixed z-[100] top-0 text-slate-200 rounded-b-[2rem] bg-black  px-16 border border-slate-400' : 'flex justify-between items-center mx-auto md:w-2/3 h-16 fixed z-[100] top-0 text-slate-200 rounded-b-[2rem] bg-black px-16 border border-slate-400'} >
+            <div className={scroll ? 'flex justify-between items-center mx-auto md:w-2/3 h-10 fixed z-[100] top-0 text-slate-200 rounded-b-[2rem] bg-black  px-16 border border-slate-400' : 'flex justify-between items-center mx-auto md:w-2/3 h-16 fixed z-[100] top-0 text-slate-200 rounded-b-[2rem] bg-black px-16 border border-slate-400'} >
                 <div>
                     <p className='uppercase font-normal text-[18px] md:text-xl font-sans tracking-tight italic'>FITNESS RATS</p>
                 </div>
