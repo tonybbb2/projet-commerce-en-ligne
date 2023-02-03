@@ -2,7 +2,7 @@ import React from 'react'
 
 const Cards = ({ cover, title, color, pricing }) => {
     return (
-        <div className='w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2'>
+        <div className='w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block relative p-2'>
             <img className='w-full h-auto block object-cover rounded-lg' src={cover} alt='tkt' />
             <div className='absolute top-0 left-0 w-full h-full text-black'>
                 <div className='absolute top-4 left-4'>

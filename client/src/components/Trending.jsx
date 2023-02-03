@@ -5,7 +5,7 @@ const Trending = () => {
     return (
         <section id='Trending' className='w-full h-full'>
             <div className='w-full md:h-1/4'>
-                <div className='md:px-64'>
+                <div className='md:px-64 text-center md:text-left'>
                     <p className='font-bold text-white uppercase  text-md md:text-2xl '>shop</p>
                     <span className='font-extrabold text-white uppercase  text-md md:text-3xl'>Trending</span>
                 </div>

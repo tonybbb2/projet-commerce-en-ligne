@@ -3,7 +3,7 @@ import React from 'react'
 
 export const Hero = () => {
     return (
-        <section id='Hero' className="w-full h-full py-[6rem]">
+        <section id='Hero' className="w-full h-full py-[5rem] md:py-[6rem]">
             <div className="grid-container mx-auto  max-w-[var(--container-md-max-width)] relative size-1 ">
                 <div className="tile group alphalete-poster " data-block-index="0">
                     <div className="relative tile-media-container clipped absolute-tl  w-[80%] md:w-[75%] mx-auto">
