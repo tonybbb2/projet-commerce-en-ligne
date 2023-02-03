@@ -4,6 +4,7 @@ import { Navbar } from "./components/Navbar";
 import { Login } from "./components/Login"
 import { Hero } from "./components/Hero";
 import { Register } from "./components/Register"
+import Trending from "./components/Trending"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
+      <Trending />
     </BrowserRouter>
   );
 }
