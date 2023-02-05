@@ -6,21 +6,27 @@ import { AiOutlineMenu, AiOutlineClose, AiFillTwitterCircle, AiOutlineYoutube } 
 import { FiHelpCircle } from 'react-icons/fi'
 import { FaTruckLoading, FaShoppingBag } from 'react-icons/fa'
 import { GiReturnArrow } from 'react-icons/gi'
+import { Link } from 'react-router-dom'
 
 export const Navbar = () => {
 
     const [scroll, setScroll] = useState(false)
     const [nav, setNav] = useState(false)
     const [expand, setExpand] = useState(false)
+    const [expandwomen, setExpandWomen] = useState(false)
 
     const handleNav = () => {
         setNav(!nav);
     }
 
+
     const handleExpand = () => {
         setExpand(!expand);
     }
 
+    const handleExpandWomen = () => {
+        setExpandWomen(!expandwomen);
+    }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -42,7 +48,9 @@ export const Navbar = () => {
                         <p className='text-[10px] font-bold text-gray-300 py-[1px]'>Free Shipping on all orders over $100</p>
                     </div>
                     <div>
+                        <Link to='/login'>
                         <p className='text-[12px] font-bold text-gray-300'>Login</p>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -52,8 +60,8 @@ export const Navbar = () => {
                         <p className='uppercase font-normal text-[18px] md:text-xl font-sans tracking-tight italic'>FITNESS RATS</p>
                     </div>
                     <div className='md:flex px-2 hidden md:block mr-[50px] font-extrabold text-gray-300'>
-                        <p className='-ml-[40px] uppercase text-sm' onMouseOver={handleExpand}>Men</p>
-                        <p className='ml-4 uppercase text-sm' >Women</p>
+                        <p className='-ml-[40px] uppercase text-sm hover:border-t' onMouseOver={handleExpand}>Men</p>
+                        <p className='ml-4 uppercase text-sm hover:border-t' onMouseOver={handleExpandWomen}>Women</p>
                     </div>
                     <div className='flex'>
                         <BsSearch className='text-lg md:text-xl mr-2 hidden md:block' />
@@ -202,7 +210,7 @@ export const Navbar = () => {
                 </div>
             </div>
             {expand ?
-                <div onMouseLeave={handleExpand} className='fixed inset-x-0 top-[64px] h-[28rem] z-[100] border-x-[1px] border-[#3d3d3d] mx-auto bg-opacity-90 bg-black hidden md:block md:w-2/3 text-slate-200 rounded-b-[2rem]' >
+                <div onMouseLeave={handleExpand} className={scroll ? 'fixed inset-x-0 top-[54px] h-[28rem] z-[100] border-x-[1px] border-[#3d3d3d] mx-auto bg-opacity-90 bg-black hidden md:block md:w-2/3 text-slate-200 rounded-[15px]' : 'fixed inset-x-0 top-[64px] h-[28rem] z-[100] border-x-[1px] border-[#3d3d3d] mx-auto bg-opacity-90 bg-black hidden md:block  rounded-b-2xl md:w-2/3 text-slate-200'} >
                     <hr class="h-px mx-auto my-8 w-[15rem] sm:w-[75rem] bg-gray-400 border-0"></hr>
                     <div className='grid grid-cols-2'>
                         <div className='grid grid-rows-4 text-center'>
@@ -226,6 +234,93 @@ export const Navbar = () => {
 
                                         </ul></div>
                                     <div><ul class="space-y-2 text-slate-300 list-none   text-left list-inside text-md p-10">
+                                        <li>
+                                            Shirts
+                                        </li>
+                                        <li>
+                                            Hoodies & Jackets
+                                        </li>
+                                        <li>
+                                            Joggers
+                                        </li>
+                                        <li>
+                                            Dresses & Skirts
+                                        </li>
+
+                                    </ul></div>
+                                </div>
+                            </div>
+                            <div><hr class="h-px mx-auto w-[15rem] sm:w-[25rem] bg-gray-400 border-0"></hr>
+                                <div className='p-8 flex justify-between text-white text-2xl '>
+                                    <CgProfile className=' mr-2' />
+                                    <FiHelpCircle className='mr-2' />
+                                    <FaTruckLoading className='mr-2' />
+                                    <GiReturnArrow className='mr-2' />
+                                    <FaShoppingBag className='mr-2' />
+                                    <BsFillInfoCircleFill className=' mr-2' />
+                                </div>
+                            </div>
+                        </div>
+                        <div className='grid grid-cols-2'>
+                            <div>
+                                <div className='text-center'>
+                                    <div className='w-[150px] sm:w-[275px] inline-block relative'>
+                                        <img className='w-[170px] md:w-full sm:h-[345px] block object-cover rounded-lg' src='https://cdn.shopify.com/s/files/1/0667/0133/files/11BFHaze_19.jpg?crop=center&height=300&v=1670864224&width=250' alt='tkt' />
+                                        <div className='absolute top-0 left-0 w-full h-full text-black'>
+                                            <div className='absolute top-4 left-4'>
+                                                <button className="bg-gray-500 bg-opacity-80 text-white text-[12px] font-extrabold py-1 px-3 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 mt-2">
+                                                    New Arrivals
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div className='text-center'>
+                                    <div className='w-[150px] sm:w-[275px] inline-block relative'>
+                                        <img className='w-[170px] md:w-full sm:h-[345px] block object-cover rounded-lg' src='https://cdn.shopify.com/s/files/1/0538/2658/4736/files/01BF-NEW_042-port_800x.jpg?v=1668864373' alt='tkt' />
+                                        <div className='absolute top-0 left-0 w-full h-full text-black'>
+                                            <div className='absolute top-4 left-4'>
+                                                <button className="bg-gray-500 bg-opacity-80 text-white text-[12px] font-extrabold py-1 px-3 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 mt-2">
+                                                    All Men
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                :
+                false}
+            {expandwomen ?
+                <div onMouseLeave={handleExpandWomen} className={scroll ? 'fixed inset-x-0 top-[54px] h-[28rem] z-[100] border-x-[1px] border-[#3d3d3d] mx-auto bg-opacity-90 bg-black hidden md:block md:w-2/3 text-slate-200 rounded-[15px]' : 'fixed inset-x-0 top-[64px] h-[28rem] z-[100] border-x-[1px] border-[#3d3d3d] mx-auto bg-opacity-90 bg-black hidden md:block md:w-2/3 rounded-b-2xl text-slate-200'} >
+                    <hr class="h-px mx-auto my-8 w-[15rem] sm:w-[75rem] bg-gray-400 border-0"></hr>
+                    <div className='grid grid-cols-2'>
+                        <div className='grid grid-rows-4 text-center'>
+                            <div className='row-span-3'>
+                                <p className='text-md font-bold uppercase'>products</p>
+                                <div className='grid grid-cols-2'>
+                                    <div>
+                                        <ul class="space-y-2 text-slate-300 list-none text-left list-inside text-md p-10">
+                                            <li>
+                                                Sports Bras
+                                            </li>
+                                            <li>
+                                                Shorts
+                                            </li>
+                                            <li>
+                                                Leggings
+                                            </li>
+                                            <li>
+                                                Tank Tops
+                                            </li>
+
+                                        </ul></div>
+                                    <div><ul class="space-y-2 text-slate-300 list-none   text-left list-inside text-md p-10">
+
                                         <li>
                                             Shirts & Crops
                                         </li>
@@ -257,7 +352,7 @@ export const Navbar = () => {
                             <div>
                                 <div className='text-center'>
                                     <div className='w-[150px] sm:w-[275px] inline-block relative'>
-                                        <img className='w-full h-[345px] block object-cover rounded-lg' src='https://cdn.shopify.com/s/files/1/0667/0133/files/11BFHaze_19.jpg?crop=center&height=300&v=1670864224&width=250' alt='tkt' />
+                                        <img className='w-full h-[345px] block object-cover rounded-lg' src='https://cdn.shopify.com/s/files/1/0667/0133/files/JanColorBlocks_48-port_800x.jpg?v=1673682173' alt='tkt' />
                                         <div className='absolute top-0 left-0 w-full h-full text-black'>
                                             <div className='absolute top-4 left-4'>
                                                 <button className="bg-gray-500 bg-opacity-80 text-white text-[12px] font-extrabold py-1 px-3 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 mt-2">
@@ -271,11 +366,11 @@ export const Navbar = () => {
                             <div>
                                 <div className='text-center'>
                                     <div className='w-[150px] sm:w-[275px] inline-block relative'>
-                                        <img className='w-full h-auto block object-cover rounded-lg' src='https://cdn.shopify.com/s/files/1/0538/2658/4736/files/01BF-NEW_042-port_800x.jpg?v=1668864373' alt='tkt' />
+                                        <img className='w-full h-auto block object-cover rounded-lg' src='https://cdn.shopify.com/s/files/1/0538/2658/4736/files/JanColorBlocks_05-port_800x.jpg?v=1673718145' alt='tkt' />
                                         <div className='absolute top-0 left-0 w-full h-full text-black'>
                                             <div className='absolute top-4 left-4'>
                                                 <button className="bg-gray-500 bg-opacity-80 text-white text-[12px] font-extrabold py-1 px-3 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 mt-2">
-                                                    All Men
+                                                    All Women
                                                 </button>
                                             </div>
                                         </div>
