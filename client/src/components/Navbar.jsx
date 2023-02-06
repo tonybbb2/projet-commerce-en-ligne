@@ -82,13 +82,13 @@ export const Navbar = () => {
                             </div>
                         </div> */}
                         <form>
-                            <div class="relative">
-                                <input type="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border-[1px] rounded-lg bg-black backdrop-blur-sm bg-opacity-90 " placeholder="Search ..." required />
-                                <hr class="h-px mx-auto my-8 w-[15rem] sm:w-[35rem] bg-gray-300 border-0"></hr>
+                            <div className="relative">
+                                <input type="search" id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-900 border-[1px] rounded-lg bg-black backdrop-blur-sm bg-opacity-90 " placeholder="Search ..." required />
+                                <hr className="h-px mx-auto my-8 w-[15rem] sm:w-[35rem] bg-gray-300 border-0"></hr>
                                 <div className='grid grid-cols-2 gap-1'>
                                     <div className='text-center font-bold text-white uppercase'>
                                         <p className='font-extrabold text-white uppercase'>MEN</p>
-                                        <ul class="space-y-4 text-slate-300 list-none list-inside text-xs p-10">
+                                        <ul className="space-y-4 text-slate-300 list-none list-inside text-xs p-10">
                                             <li>
                                                 Shorts
                                             </li>
@@ -117,7 +117,7 @@ export const Navbar = () => {
                                     </div>
                                     <div className='text-center font-bold text-white uppercase'>
                                         <p className='font-extrabold text-white uppercase '>WOMEN</p>
-                                        <ul class="space-y-4 text-slate-300 list-none list-inside text-xs p-10">
+                                        <ul className="space-y-4 text-slate-300 list-none list-inside text-xs p-10">
                                             <li>
                                                 Sports Bras
                                             </li>
@@ -144,7 +144,7 @@ export const Navbar = () => {
                                             </li>
                                         </ul></div>
                                 </div>
-                                <hr class="h-px mx-auto my-8 w-[15rem] sm:w-[35rem] bg-gray-300 border-0"></hr>
+                                <hr className="h-px mx-auto my-8 w-[15rem] sm:w-[35rem] bg-gray-300 border-0"></hr>
                                 <div className='grid grid-cols-2'>
                                     <div className='sm:p-5'>
                                         <div className='w-[165px] sm:w-[275px] inline-block relative'>
@@ -172,9 +172,9 @@ export const Navbar = () => {
                                     </div>
 
                                 </div>
-                                <hr class="h-px mx-auto my-8 w-[15rem] sm:w-[35rem] bg-gray-300 border-0"></hr>
+                                <hr className="h-px mx-auto my-8 w-[15rem] sm:w-[35rem] bg-gray-300 border-0"></hr>
                                 <div className='w-full text-left'>
-                                    <ul class="space-y-6 p-8 text-slate-300 list-none list-inside text-md ">
+                                    <ul className="space-y-6 p-8 text-slate-300 list-none list-inside text-md ">
                                         <li className='flex'>
                                             <CgProfile className='text-2xl mr-2' /> Sign In
                                         </li>
@@ -196,7 +196,7 @@ export const Navbar = () => {
                                     </ul>
 
                                 </div>
-                                <hr class="h-px mx-auto my-8 w-[15rem] sm:w-[35rem] bg-gray-300 border-0"></hr>
+                                <hr className="h-px mx-auto my-8 w-[15rem] sm:w-[35rem] bg-gray-300 border-0"></hr>
                                 <div className='w-full flex justify-between text-white text-2xl'>
                                     <BsFacebook />
                                     <BsInstagram />
@@ -211,14 +211,14 @@ export const Navbar = () => {
             </div>
             {expand ?
                 <div onMouseLeave={handleExpand} className={scroll ? 'fixed inset-x-0 top-[54px] h-[28rem] z-[100] border-x-[1px] border-[#3d3d3d] mx-auto bg-opacity-90 bg-black hidden md:block md:w-2/3 text-slate-200 rounded-[15px]' : 'fixed inset-x-0 top-[64px] h-[28rem] z-[100] border-x-[1px] border-[#3d3d3d] mx-auto bg-opacity-90 bg-black hidden md:block  rounded-b-2xl md:w-2/3 text-slate-200'} >
-                    <hr class="h-px mx-auto my-8 w-[15rem] sm:w-[75rem] bg-gray-400 border-0"></hr>
+                    <hr className="h-px mx-auto my-8 w-[15rem] sm:w-[75rem] bg-gray-400 border-0"></hr>
                     <div className='grid grid-cols-2'>
                         <div className='grid grid-rows-4 text-center'>
                             <div className='row-span-3'>
                                 <p className='text-md font-bold uppercase'>products</p>
                                 <div className='grid grid-cols-2'>
                                     <div>
-                                        <ul class="space-y-2 text-slate-300 list-none text-left list-inside text-md p-10">
+                                        <ul className="space-y-2 text-slate-300 list-none text-left list-inside text-md p-10">
                                             <li>
                                                 Shorts
                                             </li>
@@ -233,7 +233,7 @@ export const Navbar = () => {
                                             </li>
 
                                         </ul></div>
-                                    <div><ul class="space-y-2 text-slate-300 list-none   text-left list-inside text-md p-10">
+                                    <div><ul className="space-y-2 text-slate-300 list-none   text-left list-inside text-md p-10">
                                         <li>
                                             Shirts
                                         </li>
@@ -250,7 +250,7 @@ export const Navbar = () => {
                                     </ul></div>
                                 </div>
                             </div>
-                            <div><hr class="h-px mx-auto w-[15rem] sm:w-[25rem] bg-gray-400 border-0"></hr>
+                            <div><hr className="h-px mx-auto w-[15rem] sm:w-[25rem] bg-gray-400 border-0"></hr>
                                 <div className='p-8 flex justify-between text-white text-2xl '>
                                     <CgProfile className=' mr-2' />
                                     <FiHelpCircle className='mr-2' />
@@ -297,14 +297,14 @@ export const Navbar = () => {
                 false}
             {expandwomen ?
                 <div onMouseLeave={handleExpandWomen} className={scroll ? 'fixed inset-x-0 top-[54px] h-[28rem] z-[100] border-x-[1px] border-[#3d3d3d] mx-auto bg-opacity-90 bg-black hidden md:block md:w-2/3 text-slate-200 rounded-[15px]' : 'fixed inset-x-0 top-[64px] h-[28rem] z-[100] border-x-[1px] border-[#3d3d3d] mx-auto bg-opacity-90 bg-black hidden md:block md:w-2/3 rounded-b-2xl text-slate-200'} >
-                    <hr class="h-px mx-auto my-8 w-[15rem] sm:w-[75rem] bg-gray-400 border-0"></hr>
+                    <hr className="h-px mx-auto my-8 w-[15rem] sm:w-[75rem] bg-gray-400 border-0"></hr>
                     <div className='grid grid-cols-2'>
                         <div className='grid grid-rows-4 text-center'>
                             <div className='row-span-3'>
                                 <p className='text-md font-bold uppercase'>products</p>
                                 <div className='grid grid-cols-2'>
                                     <div>
-                                        <ul class="space-y-2 text-slate-300 list-none text-left list-inside text-md p-10">
+                                        <ul className="space-y-2 text-slate-300 list-none text-left list-inside text-md p-10">
                                             <li>
                                                 Sports Bras
                                             </li>
@@ -319,7 +319,7 @@ export const Navbar = () => {
                                             </li>
 
                                         </ul></div>
-                                    <div><ul class="space-y-2 text-slate-300 list-none   text-left list-inside text-md p-10">
+                                    <div><ul className="space-y-2 text-slate-300 list-none   text-left list-inside text-md p-10">
 
                                         <li>
                                             Shirts & Crops
@@ -337,7 +337,7 @@ export const Navbar = () => {
                                     </ul></div>
                                 </div>
                             </div>
-                            <div><hr class="h-px mx-auto w-[15rem] sm:w-[25rem] bg-gray-400 border-0"></hr>
+                            <div><hr className="h-px mx-auto w-[15rem] sm:w-[25rem] bg-gray-400 border-0"></hr>
                                 <div className='p-8 flex justify-between text-white text-2xl '>
                                     <CgProfile className=' mr-2' />
                                     <FiHelpCircle className='mr-2' />
