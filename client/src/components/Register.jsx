@@ -6,6 +6,10 @@ function Register() {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
+    function verifyFields() {
+        
+    }
+
     function register() {
         // Function to register
     }
