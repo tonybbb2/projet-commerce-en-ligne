@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Cards = ({ cover, title, color, pricing }) => {
     return (
-        <div className='w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block relative p-2'>
+        <Link to="/details/1" className='w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block relative p-2'>
             <img className='w-full h-auto block object-cover rounded-lg' src={cover} alt='tkt' />
             <div className='absolute top-0 left-0 w-full h-full text-black'>
                 <div className='absolute top-4 left-4'>
@@ -14,7 +15,7 @@ const Cards = ({ cover, title, color, pricing }) => {
             <p className='mt-2 text-md font-bold text-white'>{title}</p>
             <p className='text-sm font-semibold text-gray-400'>{color}</p>
             <p className='text-xs font-semibold text-gray-400'>{pricing}</p>
-        </div>
+        </Link>
     )
 }
 

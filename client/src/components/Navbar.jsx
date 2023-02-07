@@ -57,7 +57,7 @@ export const Navbar = () => {
             <div className='flex justify-center'>
                 <div className={scroll ? 'flex justify-between opacity-90 fixed items-center mx-auto md:w-2/3 h-10 z-[100] top-0  text-slate-200 rounded-b-[2rem] bg-black  px-16 border border-slate-400' : 'flex justify-between items-center mx-auto md:w-2/3 h-16  z-[100] top-0 text-slate-200 rounded-b-[2rem] border-[1px] border-[#3d3d3d] bg-black px-16 '} >
                     <div>
-                        <p className='uppercase font-normal text-[18px] md:text-xl font-sans tracking-tight italic'>FITNESS RATS</p>
+                        <Link to={'/'} className='uppercase font-normal text-[18px] md:text-xl font-sans tracking-tight italic'>FITNESS RATS</Link>
                     </div>
                     <div className='md:flex px-2 hidden md:block mr-[50px] font-extrabold text-gray-300'>
                         <p className='-ml-[40px] uppercase text-sm hover:border-t' onMouseOver={handleExpand}>Men</p>
