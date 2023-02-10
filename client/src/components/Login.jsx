@@ -1,13 +1,26 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { UserAuth } from '../context/AuthContext'
+import { Link, useNavigate } from "react-router-dom"
 
 function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = React.useState('')
 
-    function signIn() {
-        // Function to sign in
+    const { user, signIn } = UserAuth()
 
+    const navigate = useNavigate()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setError('')
+        try {
+            await signIn(email, password)
+            navigate('/')
+        } catch (error) {
+            console.log(error)
+            setError(error.message)
+        }
     }
 
     return (
@@ -45,7 +58,7 @@ function Login() {
                         <button
                             className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                             type="button"
-                            onClick={signIn}
+                            onClick={handleSubmit}
                         >
                             Sign In
                         </button>
@@ -57,5 +70,6 @@ function Login() {
 
     )
 }
+
 
 export { Login }
