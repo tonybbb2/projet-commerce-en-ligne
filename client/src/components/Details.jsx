@@ -41,7 +41,7 @@ function Details() {
             <div className="container px-5 py-24 mx-auto">
                 <div className="lg:w-4/5 mx-auto flex flex-wrap">
                     <img alt="Product Image" className="lg:w-1/2 w-full object-cover object-center rounded-[20px] border" src="https://cdn.shopify.com/s/files/1/0538/2658/4736/products/AmplifyRestockMay310083_1000x.jpg?v=1673719047" />
-                    <div id="default-carousel" className="relative" data-carousel="static">
+                    {/* <div id="default-carousel" className="relative" data-carousel="static">
                         Carousel wrapper
                         <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
                             {
@@ -75,8 +75,7 @@ function Details() {
                                 <span className="sr-only">Next</span>
                             </span>
                         </button>
-                    </div>
-
+                    </div> */}
 
                     <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                         <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
