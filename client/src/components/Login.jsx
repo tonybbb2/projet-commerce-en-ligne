@@ -1,9 +1,5 @@
 import React, { useState } from "react"
-<<<<<<< HEAD
 import { UserAuth } from '../components/context/AuthContext'
-=======
-import { UserAuth } from './context/AuthContext'
->>>>>>> 7fa85d9ed719544b8a478a7784cd353921b0c14a
 import { Link, useNavigate } from "react-router-dom"
 
 function Login() {
