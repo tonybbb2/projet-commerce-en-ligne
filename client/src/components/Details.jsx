@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react"
 function Details() {
     const [product, setProduct] = useState(null)
     const [selectedSize, setSelectedSize] = useState("")
-    const { id } = useParams()
+    // const { id } = useParams()
 
     function addToCart() {
         // Function to add to cart
