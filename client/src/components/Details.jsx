@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react"
-
+import { useParams } from "react-router-dom"
+import { db } from '../Firebase'
+import { getDoc, doc } from 'firebase/firestore'
 
 function Details() {
     const [product, setProduct] = useState(null)
@@ -13,7 +15,27 @@ function Details() {
     useEffect(() => {
         const getProductDetail = async () => {
             // Function to fetch and set the product detail
+            const clothesRef = doc(db, 'clothes/urls')
+
+            const fetchClothes = async () => {
+                // const braPath = doc(clothesRef, 'Bra_small_icon')
+                const bra = await getDoc(clothesRef)
+                if (bra.exists()) {
+                    return ('Document data:', bra.data());
+                } else {
+                    return ('No such document!');
+                }
+            }
+
+            const result = fetchClothes()
+                .catch(console.error)
+            result.then(value => {
+                console.log(value.Bra_big_image)
+            })
+
         }
+
+        getProductDetail();
     }, [])
 
     return (
@@ -31,7 +53,7 @@ function Details() {
                             <div className="flex items-center">
                                 <span className="mr-3">Size</span>
                                 <div className="relative">
-                                    <select 
+                                    <select
                                         className="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"
                                         onChange={e => setSelectedSize(e.target.value)}
                                     >
