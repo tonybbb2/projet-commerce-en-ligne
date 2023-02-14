@@ -1,5 +1,6 @@
 import React from "react"
 import CartCard from "./CartCard"
+import { Link } from 'react-router-dom'
 
 function Cart() {
 
@@ -14,9 +15,11 @@ function Cart() {
                         <p className='text-lg font-bold text-gray-300'>TOTAL: 112.00 USD</p>
                     </div>
                     <div className="py-2">
+                        <Link to='/checkout'>
                         <button id="checkout-btn" className="rounded-md border-2 border-green-500 bg-green-500 hover:bg-green-600" type="submit" name="checkout">
                             <p className="font-extrabold mx-6 my-2">CHECKOUT</p>
                         </button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -35,4 +38,4 @@ function Cart() {
     )
 }
 
-export default Cart
+export { Cart };

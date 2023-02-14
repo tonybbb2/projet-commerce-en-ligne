@@ -11,9 +11,9 @@ export const Hero = () => {
                             <source src={"https://cdn.shopify.com/videos/c/o/v/ffae4ba3aff04a7ca9788caab7da5714.mp4"} type="video/mp4" />
                         </video>
                         <div className="absolute bottom-10 left-10">
-                            <p className="text-[10px] md:text-4xl text-white font-extrabold">TRAIN LIKE A BEAST</p>
-                            <p className="text-[10px] md:text-4xl text-white font-extrabold">LOOK LIKE A BEAUTY</p>
-                            <p className="text-white mt-1 text-[10px] md:text-xl">Often imitated, never duplicated</p>
+                            <p className="lg:text-4xl xl:text-4xl md:text-lg sm:text-base text-white font-extrabold">TRAIN LIKE A BEAST</p>
+                            <p className="lg:text-4xl xl:text-4xl md:text-lg sm:text-base text-white font-extrabold">LOOK LIKE A BEAUTY</p>
+                            <p className="lg:text-xl xl:text-xl md:text-sm sm:text-xs text-white mt-1 ">Often imitated, never duplicated</p>
                             <button className="bg-slate-300 bg-opacity-60 hover:text-black hover:bg-white text-white h-[35px] w-[70px] text-[8px] md:text-[14px] md:h-[40px] md:w-[150px] font-extrabold py-2 px-6 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 mt-2">
                                 SHOP NOW
                             </button>

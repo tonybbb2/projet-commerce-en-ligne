@@ -6,7 +6,8 @@ import { Register } from "./components/Register"
 import { AuthContextProvider } from "./components/context/AuthContext";
 import { Home } from './components/Home'
 import { Details } from './components/Details'
-import Cart from "./components/Cart"
+import { Cart } from "./components/Cart"
+import { Checkout } from "./components/Checkout"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/details/:id" element={<Details />} />
         </Routes>
       </BrowserRouter>
