@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from "react"
 import { UserAuth } from "./context/AuthContext";
 import { Link, useNavigate } from 'react-router-dom'
- import {
-        createUserWithEmailAndPassword, signInWithEmailAndPassword,
-        signOut, onAuthStateChanged
-    } from 'firebase/auth'
+import {
+    createUserWithEmailAndPassword, signInWithEmailAndPassword,
+    signOut, onAuthStateChanged
+} from 'firebase/auth'
 import { app, auth } from "../Firebase";
 
 function Register() {
@@ -12,35 +12,30 @@ function Register() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
-    // const {user, } = UserAuth()signUp
-   
+    const { user, signUp } = UserAuth()
+
 
     const navigate = useNavigate()
 
     function verifyFields() {
         // handleSubmit()
-        
+
     }
 
-
-    const SignUp = useCallback(async event => {
-        event.preventDefault()
-        console.log("qew")
-        const {email, password} = event.target
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         try {
-            await app
-                auth()
-                createUserWithEmailAndPassword(email, password)
-                navigate('/')
+            await signUp(email, password)
+            navigate('/')
         } catch (error) {
             console.log(error)
         }
-    })
+    }
 
     return (
         <div className="flex flex-col items-center justify-center h-screen">
             <div className="w-full max-w-xs">
-                <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded-lg shadow-md" onSubmit={SignUp}>
+                <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded-lg shadow-md" onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="username">
                             Username
@@ -48,7 +43,7 @@ function Register() {
                         <input
                             className="w-full px-3 py-2 text-sm font-bold leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline placeholder:text-sm"
                             id="username"
-                            type="email"
+                            type="user"
                             placeholder="Username"
                             value={username}
                             onChange={e => setUsername(e.target.value)}
