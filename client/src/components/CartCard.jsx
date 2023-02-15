@@ -1,29 +1,26 @@
 import React from 'react'
 import { FaTrash } from 'react-icons/fa';
 import { AiOutlinePlus } from "react-icons/ai";
-import { AiOutlineMinus } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 
 
 const CartCard = ({ title, color, size, pricing, cover, quantity }) => {
     return (
         <div>
-            <div className="flex space-x-4">
+            <div className="flex flex-row">
                 <div>
                     <img src={cover} alt={title}
                         className="w-32" />
                 </div>
-                <div>
+                <div className='w-full ml-2'>
                     <h2 className="text-xl font-bold text-white">{title}</h2>
                     <p className="text-sm text-white opacity-60">{color}</p>
                     <p className="text-sm text-white opacity-60">{size}</p>
+                    <p className="text-sm text-white opacity-60">Quantity: {quantity}</p>
                     <span className="text-white ">{pricing} USD</span>
                 </div>
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                <div className="items-end">
+                    <AiOutlineClose className="w-6 h-6 text-white" />
                 </div>
             </div>
             {/* <div className="flex flex-row">
