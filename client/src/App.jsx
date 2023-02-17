@@ -9,6 +9,7 @@ import { Details } from './components/Details'
 import { Cart } from "./components/Cart"
 import { Checkout } from "./components/Checkout"
 import { Collections } from "./components/Collections"
+import { MenProducts } from "./components/MenProducts";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/details/:id" element={<Details />} />
           <Route path="/collections" element={<Collections />} />
+          <Route path="/produts/men" element={<MenProducts />} />
         </Routes>
       </BrowserRouter>
     </AuthContextProvider>
