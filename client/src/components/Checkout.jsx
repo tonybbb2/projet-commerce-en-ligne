@@ -1,7 +1,10 @@
+import { doc, updateDoc } from "firebase/firestore"
 import React from "react"
+import { db } from "../Firebase"
 import CartCard from "./CartCard"
 
 function Checkout() {
+
 
     return (
         <div>

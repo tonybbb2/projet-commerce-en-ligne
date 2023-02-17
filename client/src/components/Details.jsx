@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { db } from '../Firebase'
-import { getDoc, doc } from 'firebase/firestore'
+import { getDoc, doc, updateDoc } from 'firebase/firestore'
 
 function Details() {
     const [product, setProduct] = useState(null)
@@ -32,9 +32,22 @@ function Details() {
             console.log(value)
             setProduct(value.Bra_big_image)
         })
-
-
     }, [])
+
+    const urls_homme = doc(db, 'cart ---special id---/---special id for each item in cart---')
+
+    function write(){
+        const doc = {
+            Cover:'-----',
+            Titre:'----',
+            Color:'----',
+            Size:'----',
+            Quantity:'-----',
+            Price:'-----',
+        }
+        updateDoc(urls_homme, doc)
+    }
+    
 
     return (
         <section className="text-gray-400 body-font overflow-hidden">
