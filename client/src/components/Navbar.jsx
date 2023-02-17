@@ -7,6 +7,8 @@ import { FiHelpCircle } from 'react-icons/fi'
 import { FaTruckLoading, FaShoppingBag } from 'react-icons/fa'
 import { GiReturnArrow } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
+import { db } from '../Firebase'
+import { getDoc, doc } from 'firebase/firestore'
 
 export const Navbar = () => {
 
@@ -14,6 +16,7 @@ export const Navbar = () => {
     const [nav, setNav] = useState(false)
     const [expand, setExpand] = useState(false)
     const [expandwomen, setExpandWomen] = useState(false)
+    const [product, setProduct] = useState(null)
 
     const handleNav = () => {
         setNav(!nav);
@@ -37,7 +40,32 @@ export const Navbar = () => {
             }
         }
         window.addEventListener('scroll', handleScroll)
+
+
+        const clothesRef = doc(db, 'clothes/urls')
+
+        const fetchClothes = async () => {
+            const bra = await getDoc(clothesRef)
+            if (bra.exists()) {
+                return ('Document data:', bra.data());
+            } else {
+                return ('No such document!');
+            }
+        }
+
+        const result = fetchClothes()
+            .catch(console.error)
+        result.then(value => {
+            console.log(value)
+            setProduct(value)
+
+        })
+
+
     }, [])
+
+
+
 
 
     return (
@@ -49,7 +77,7 @@ export const Navbar = () => {
                     </div>
                     <div>
                         <Link to='/login'>
-                        <p className='text-[12px] font-bold text-gray-300'>Login</p>
+                            <p className='text-[12px] font-bold text-gray-300'>Login</p>
                         </Link>
                     </div>
                 </div>
@@ -305,9 +333,15 @@ export const Navbar = () => {
                                 <div className='grid grid-cols-2'>
                                     <div>
                                         <ul className="space-y-2 text-slate-300 list-none text-left list-inside text-md p-10">
-                                            <li>
-                                                Sports Bras
-                                            </li>
+
+                                            <Link to={{
+                                                pathname: '/collections',
+                                                state: product.Bra_big_image
+                                            }}>
+                                                <li>
+                                                    Sports Bras
+                                                </li>
+                                            </Link>
                                             <li>
                                                 Shorts
                                             </li>

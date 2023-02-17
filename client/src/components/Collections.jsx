@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { db } from '../Firebase'
+import { getDoc, doc } from 'firebase/firestore'
+
 
 export const Collections = () => {
 
-  const { category } = useLocation().state
+  const { state } = useLocation()
 
-  console.log(category)
-
+  console.log(state)
+  
   return (
     <div>
-      <p></p>
+      <p>ALLO</p>
     </div>
   )
 }
