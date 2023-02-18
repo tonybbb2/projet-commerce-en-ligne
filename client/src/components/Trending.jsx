@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Cards from './Cards'
 import { db } from '../Firebase'
 import { getDoc, doc } from 'firebase/firestore'
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 
 const Trending = () => {
 
@@ -29,7 +30,6 @@ const Trending = () => {
         })
     }, [])
 
-
     const allProducts = []
 
     if (product) {
@@ -44,6 +44,7 @@ const Trending = () => {
         }
     }
 
+
     return (
         <section id='Recommended' className='w-full h-full'>
             <div className='w-full md:h-1/4'>
@@ -51,13 +52,15 @@ const Trending = () => {
                     <p className='font-bold text-white uppercase  text-md md:text-2xl '>shop</p>
                     <span className='font-extrabold text-white uppercase  text-md md:text-3xl'>Trending</span>
                 </div>
-                <div className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative px-30 lg:px-60 mt-4'>
+
+                <div id='slider' className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative px-30 lg:px-60 mt-4 '>
                     {
                         product && allProducts.map((product, index) => {
-                            return <Cards cover={product.cover} key={index} title={'Amplify Short 4"5'} color={'black'} pricing={'$52.00'} label={'HOT'} />
+                            return <Cards cover={product.cover} key={index} title={'Amplify Short 4"5'} color={'black'} pricing={'$52.00'} label={'🔥'} />
                         })
                     }
                 </div>
+
             </div>
         </section>
     )
