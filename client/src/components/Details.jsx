@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { useParams } from "react-router-dom"
 import { db } from '../Firebase'
-import { getDoc, doc, updateDoc } from 'firebase/firestore'
+import { getDoc, doc, updateDoc, setDoc } from 'firebase/firestore'
+import { CartContext } from "../App"
 
 function Details() {
     const [product, setProduct] = useState(null)
     const [selectedSize, setSelectedSize] = useState("")
+    const cartContext = useContext(CartContext);
     // const { id } = useParams()
 
     function addToCart() {
-        // Function to add to cart
+    
     }
+
 
     useEffect(() => {
         // Function to fetch and set the product detail
@@ -34,20 +37,6 @@ function Details() {
         })
     }, [])
 
-    const urls_homme = doc(db, 'cart ---special id---/---special id for each item in cart---')
-
-    function write(){
-        const doc = {
-            Cover:'-----',
-            Titre:'----',
-            Color:'----',
-            Size:'----',
-            Quantity:'-----',
-            Price:'-----',
-        }
-        updateDoc(urls_homme, doc)
-    }
-    
 
     return (
         <section className="text-gray-400 body-font overflow-hidden">

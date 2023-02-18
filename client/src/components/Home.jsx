@@ -5,6 +5,7 @@ import Poster from "./Poster"
 import Toppicks from "./Toppicks";
 
 function Home() {
+
     return (
         <>
             <Hero />

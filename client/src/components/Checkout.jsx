@@ -1,10 +1,16 @@
 import { doc, updateDoc } from "firebase/firestore"
-import React from "react"
+import React, { useEffect, useState, useContext } from "react"
+import { CartContext } from "../App"
 import { db } from "../Firebase"
 import CartCard from "./CartCard"
 
 function Checkout() {
 
+    const cartContext = useContext(CartContext);
+
+    useEffect(() => {
+        console.log(cartContext.cartId);
+    }, [cartContext.cartId])
 
     return (
         <div>

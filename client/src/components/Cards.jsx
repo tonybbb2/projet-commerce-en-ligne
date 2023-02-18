@@ -1,12 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState, useContext } from "react"
 import { Link } from 'react-router-dom'
+import { db } from '../Firebase'
+import { getDoc, doc, updateDoc, setDoc } from 'firebase/firestore'
+import { CartContext } from "../App"
 
 const Cards = ({ cover, title, color, pricing, label }) => {
+
+    const cartContext = useContext(CartContext);
 
     const hover = (e) => {
         // get the id add
     }
 
+    async function addToCart(size) {
+        if (cartContext.cartId != 'cart') {
+            const data = {
+                Titre: title,
+                Cover: cover,
+                Color: color,
+                Size: size,
+                Quantity: '1',
+                Price: pricing,
+            };
+
+            const res = await setDoc(doc(db, cartContext.cartId, title), data, { merge: true });
+        }
+    }
 
 
     return (
@@ -26,19 +45,19 @@ const Cards = ({ cover, title, color, pricing, label }) => {
                     <hr className="h-px mx-auto w-[175px] bg-gray-100"></hr>
                     <div className='w-full flex text-center my-2 justify-between px-8 font-semibold text-sm'>
                         <div>
-                            <button className='w-full h-full text-white hover:bg-gray-600 hover:rounded-lg'>XS</button>
+                            <button className='w-full h-full text-white hover:bg-gray-600 hover:rounded-lg' onClick={() => addToCart('XS')}>XS</button>
                         </div>
                         <div>
-                            <button className='w-full h-full text-white hover:bg-gray-600 hover:rounded-lg'>S</button>
+                            <button className='w-full h-full text-white hover:bg-gray-600 hover:rounded-lg' onClick={() => addToCart('S')}>S</button>
                         </div>
                         <div>
-                            <button className='w-full h-full text-white hover:bg-gray-600 hover:rounded-lg'>MD</button>
+                            <button className='w-full h-full text-white hover:bg-gray-600 hover:rounded-lg' onClick={() => addToCart('MD')}>MD</button>
                         </div>
                         <div>
-                            <button className='w-full h-full text-white hover:bg-gray-600 hover:rounded-lg'>LG</button>
+                            <button className='w-full h-full text-white hover:bg-gray-600 hover:rounded-lg' onClick={() => addToCart('LG')}>LG</button>
                         </div>
                         <div>
-                            <button className='w-full h-full text-white hover:bg-gray-600 hover:rounded-lg'>XL</button>
+                            <button className='w-full h-full text-white hover:bg-gray-600 hover:rounded-lg' onClick={() => addToCart('XL')}>XL</button>
                         </div>
                     </div>
                 </div>
