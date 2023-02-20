@@ -17,6 +17,7 @@ export const Navbar = () => {
     const [expand, setExpand] = useState(false)
     const [expandwomen, setExpandWomen] = useState(false)
     const [product, setProduct] = useState(null)
+    const [menproduct, setmenProduct] = useState(null)
     const [allbras, setBra] = useState(null)
 
     const handleNav = () => {
@@ -69,6 +70,28 @@ export const Navbar = () => {
 
         console.log(allbras)
 
+    }, [])
+
+    useEffect(() => {
+        // Function to fetch and set the product detail
+        const clothesRef = doc(db, 'clothes/urls_homme')
+
+        const fetchClothes = async () => {
+            //const braPath = doc(clothesRef, 'Bra_small_icon')
+            const bra = await getDoc(clothesRef)
+            if (bra.exists()) {
+                return ('Document data:', bra.data());
+            } else {
+                return ('No such document!');
+            }
+        }
+
+        const result = fetchClothes()
+            .catch(console.error)
+        result.then(value => {
+            console.log(value)
+            setmenProduct(value)
+        })
     }, [])
 
 
@@ -252,16 +275,22 @@ export const Navbar = () => {
                                     <div>
                                         <ul className="space-y-2 text-slate-300 list-none text-left list-inside text-md p-10">
                                             <li>
+                                            <Link to="/collections" state={{ category: 'Shorts', data: menproduct.short_shorts_big }}>
                                                 Shorts
+                                            </Link>
                                             </li>
                                             <li>
-                                                Joggers
+                                                <Link to="/collections" state={{ category: 'Joggers', data: menproduct.joggers_big }}>
+                                                    Joggers
+                                                </Link>
                                             </li>
                                             <li>
                                                 Short Sleeves
                                             </li>
                                             <li>
-                                                Tank Tops
+                                                <Link to="/collections" state={{ category: 'Tank Tops', data: menproduct.tanks_big }}>
+                                                    Tank Tops
+                                                </Link>
                                             </li>
 
                                         </ul></div>
@@ -270,10 +299,14 @@ export const Navbar = () => {
                                             Shirts
                                         </li>
                                         <li>
-                                            Hoodies & Jackets
+                                            <Link to="/collections" state={{ category: 'Hoodies & Jackets', data: menproduct.hoodie_big }}>
+                                                Hoodies & Jackets
+                                            </Link>
                                         </li>
                                         <li>
-                                            Joggers
+                                            <Link to="/collections" state={{ category: 'Joggers', data: menproduct.joggers_big }}>
+                                                Joggers
+                                            </Link>
                                         </li>
                                         <li>
                                             Dresses & Skirts
