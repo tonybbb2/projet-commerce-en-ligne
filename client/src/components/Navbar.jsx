@@ -17,6 +17,7 @@ export const Navbar = () => {
     const [expand, setExpand] = useState(false)
     const [expandwomen, setExpandWomen] = useState(false)
     const [product, setProduct] = useState(null)
+    const [allbras, setBra] = useState(null)
 
     const handleNav = () => {
         setNav(!nav);
@@ -62,10 +63,13 @@ export const Navbar = () => {
         })
 
 
+        // combine bra_big_image and bra_small_image into one array
+        const b = product?.Bra_big_image.concat(product?.Bra_small_icon)
+        setBra(b)
+
+        console.log(allbras)
+
     }, [])
-
-
-
 
 
     return (
@@ -289,7 +293,7 @@ export const Navbar = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='grid grid-cols-2'>
+                        <div className='grid grid-cols-1 lg:grid-cols-2'>
                             <div>
                                 <div className='text-center'>
                                     <div className='w-[150px] sm:w-[275px] inline-block relative'>
@@ -333,20 +337,20 @@ export const Navbar = () => {
                                 <div className='grid grid-cols-2'>
                                     <div>
                                         <ul className="space-y-2 text-slate-300 list-none text-left list-inside text-md p-10">
-
-                                            <Link to={{
-                                                pathname: '/collections',
-                                                state: product.Bra_big_image
-                                            }}>
-                                                <li>
-                                                    Sports Bras
-                                                </li>
-                                            </Link>
                                             <li>
-                                                Shorts
+                                                <Link to="/collections" state={{ category: 'Sports Bras', data: product.Bra_big_image }}>
+                                                    Sports Bras
+                                                </Link>
                                             </li>
                                             <li>
-                                                Leggings
+                                                <Link to="/collections" state={{ category: 'Shorts', data: product.short_big_image }}>
+                                                    Shorts
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/collections" state={{ category: 'Leggings', data: product.Leggings_big_image }}>
+                                                    Leggings
+                                                </Link>
                                             </li>
                                             <li>
                                                 Tank Tops
@@ -355,8 +359,9 @@ export const Navbar = () => {
                                         </ul></div>
                                     <div><ul className="space-y-2 text-slate-300 list-none   text-left list-inside text-md p-10">
 
-                                        <li>
-                                            Shirts & Crops
+                                        <li><Link to="/collections" state={{ category: 'Long Sleeve', data: product.LongSleeve_big_image }}>
+                                            Long Sleeve
+                                        </Link>
                                         </li>
                                         <li>
                                             Hoodies & Jackets
@@ -365,7 +370,9 @@ export const Navbar = () => {
                                             Joggers
                                         </li>
                                         <li>
-                                            Dresses & Skirts
+                                            <Link to="/collections" state={{ category: 'Dresses & Skirts', data: product.Skirt_large_image }}>
+                                                Dresses & Skirts
+                                            </Link>
                                         </li>
 
                                     </ul></div>
