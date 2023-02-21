@@ -43,7 +43,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/details/:id" element={<Details />} />
             <Route path="/collections" element={<Collections />} />
-            <Route path="/produts/men" element={<MenProducts />} />
+            <Route path="/products/men" element={<MenProducts />} />
           </Routes>
         </BrowserRouter>
       </CartContext.Provider>
