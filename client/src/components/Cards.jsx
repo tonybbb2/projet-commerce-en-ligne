@@ -15,15 +15,21 @@ const Cards = ({ cover, title, color, pricing, label }) => {
     async function addToCart(size) {
         if (cartContext.cartId != 'cart') {
             const data = {
-                Titre: title,
-                Cover: cover,
-                Color: color,
-                Size: size,
-                Quantity: '1',
-                Price: pricing,
-            };
+                [title]: [
+                    {
+                        Titre: title,
+                        Cover: cover,
+                        Color: color,
+                        Size: size,
+                        Quantity: '1',
+                        Price: pricing,
+                    }
 
-            const res = await setDoc(doc(db, cartContext.cartId, title), data, { merge: true });
+                ]
+
+            }
+
+            const res = await setDoc(doc(db, cartContext.cartId, 'cart'), data, { merge: true });
         }
     }
 
@@ -64,7 +70,7 @@ const Cards = ({ cover, title, color, pricing, label }) => {
             </div>
             <p className='mt-2 text-md font-bold text-white'>{title}</p>
             <p className='text-sm font-semibold text-gray-400'>{color}</p>
-            <p className='text-xs font-semibold text-gray-400'>{pricing}</p>
+            <p className='text-xs font-semibold text-gray-400'>${pricing}</p>
         </Link>
     )
 }

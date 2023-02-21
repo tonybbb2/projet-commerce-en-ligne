@@ -32,17 +32,17 @@ const Trending = () => {
 
     const allProducts = []
 
-    if (product) {
-        for (const key in product) {
-            product[key].forEach((url, index) => {
-                if (index < 10) {
-                    allProducts.push({
-                        cover: url.replace(/\s/g, '')
-                    })
-                }
-            })
-        }
-    }
+    // if (product) {
+    //     for (const key in product) {
+    //         product[key].forEach((url, index) => {
+    //             if (index < 10) {
+    //                 allProducts.push({
+    //                     cover: url.replace(/\s/g, '')
+    //                 })
+    //             }
+    //         })
+    //     }
+    // }
 
 
     return (
@@ -56,7 +56,7 @@ const Trending = () => {
                 <div id='slider' className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative px-30 lg:px-60 mt-4 '>
                     {
                         product && allProducts.map((product, index) => {
-                            return <Cards cover={product.cover} key={index} title={'Amplify Short 4"5'} color={'black'} pricing={'$52.00'} label={'🔥'} />
+                            return <Cards cover={product.cover} key={index} title={'Amplify Short 4"5'} color={'black'} pricing={52.00} label={'🔥'} />
                         })
                     }
                 </div>

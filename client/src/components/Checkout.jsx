@@ -1,4 +1,4 @@
-import { doc, updateDoc } from "firebase/firestore"
+import { doc, getDoc } from "firebase/firestore"
 import React, { useEffect, useState, useContext } from "react"
 import { CartContext } from "../App"
 import { db } from "../Firebase"
@@ -7,10 +7,59 @@ import CartCard from "./CartCard"
 function Checkout() {
 
     const cartContext = useContext(CartContext);
+    const [cart, setCart] = useState([]);
+    const [cartItems, setcartItems] = useState([]);
+    const [subtotalPrice, setsubtotalPrice] = useState(0);
+    const [totalPrice, settotalPrice] = useState(0);
 
     useEffect(() => {
-        console.log(cartContext.cartId);
+        // Function to fetch and set the cart
+        if (cartContext.cartId != 'cart') {
+
+            const cartRef = doc(db, `${cartContext.cartId}/cart`)
+
+            const fetchCart = async () => {
+                const cart = await getDoc(cartRef)
+                if (cart.exists()) {
+                    return ('Document data:', cart.data());
+                } else {
+                    return ('No such document!');
+                }
+            }
+
+            const result = fetchCart()
+                .catch(console.error)
+            result.then(value => {
+                setCart(value);
+            })
+        }
     }, [cartContext.cartId])
+
+    useEffect(() => {
+        //Reformatter les données provenant de firebase
+        for (const propertyName in cart) {
+            if (Object.hasOwnProperty.call(cart, propertyName)) {
+                const itemsArray = cart[propertyName];
+
+                for (const item of itemsArray) {
+                    const { Titre, Cover, Color, Size, Quantity, Price } = item;
+                    setcartItems(prevCartItems => [...prevCartItems, item]);
+                    console.log(Titre, Cover, Color, Size, Quantity, Price);
+
+                }
+            }
+        }
+    }, [cart])
+
+    // Calculate total price
+    useEffect(() => {
+        if (cartItems.length > 0) {
+            const totalPrice = cartItems.reduce((acc, item) => acc + parseFloat(item.Price), 0);
+            settotalPrice(totalPrice.toFixed(2));
+            setsubtotalPrice((totalPrice+20).toFixed(2))
+        }
+    }, [cartItems]);
+
 
     return (
         <div>
@@ -121,22 +170,32 @@ function Checkout() {
                             <div className="rounded-xl p-[2rem] pb-[1rem] border border-secondary/20 shadow-xl transition-all duration-[1s] ease-out-expo active:scale-95 my-5 border-neutral-500">
                                 <div className="mt-8">
                                     <div className="flex flex-col space-y-4">
-                                        <CartCard title={'DAD HAT'} color={'White'} size={'Adjustable'} pricing={'28.00'} cover={'https://cdn.shopify.com/s/files/1/0538/2658/4736/products/WhiteWolfHeadHat2_f175ba50-4906-40af-966a-3bd25c8e535e_1000x.jpg?v=1673718721'} quantity={'1'} />
-                                        <CartCard title={'AMPLIFY SHORT 4.5"'} color={'Black'} size={'S'} pricing={'48.00'} cover={'https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyRestockMay310133_1000x.jpg?v=1668811498'} quantity={'1'} />
+                                        {cartItems && cartItems.length > 0 && cartItems.map((item, index) => (
+                                            <CartCard
+                                                key={index}
+                                                title={item.Titre}
+                                                color={item.Color}
+                                                size={item.Size}
+                                                pricing={item.Price}
+                                                cover={item.Cover}
+                                                quantity={item.Quantity}
+                                            />
+                                        ))}
+                                        {(!cartItems || cartItems.length === 0) && <p className="text-xl font-bold text-white">Your cart is empty</p>}
                                     </div>
                                 </div>
                                 <div className="flex p-4 mt-4">
-                                    <h2 className="text-xl font-bold text-white">2 ITEMS</h2>
+                                    <h2 className="text-xl font-bold text-white">{cartItems.length} ITEMS</h2>
                                 </div>
                                 <div
                                     className="flex items-center w-full py-4 text-sm font-semibold border-b border-neutral-500 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0 text-white">
-                                    Subtotal: <span className="ml-2 text-white">$40.00</span></div>
+                                    Subtotal: <span className="ml-2 text-white">${totalPrice}</span></div>
                                 <div
                                     className="flex items-center w-full py-4 text-sm font-semibold border-b border-neutral-500 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0 text-white">
-                                    Shipping: <span className="ml-2 text-white">$10</span></div>
+                                    Shipping: <span className="ml-2 text-white">$20</span></div>
                                 <div
                                     className="flex items-center w-full py-4 text-sm font-semibold border-b border-neutral-500 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0 text-white">
-                                    Total: <span className="ml-2 text-white">$50.00</span></div>
+                                    Total: <span className="ml-2 text-white">${subtotalPrice}</span></div>
                             </div>
                         </div>
                     </div>
