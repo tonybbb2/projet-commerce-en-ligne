@@ -15,7 +15,9 @@ import axios from 'axios'
 export const CartContext = React.createContext();
 
 function App() {
-  const [cartId, setcartId] = useState('cart')
+  const [cartId, setcartId] = useState('cart');
+  const [cart, setCart] = useState([]);
+  const [cartItems, setcartItems] = useState([]);
 
   //Prend l'adresse ip de l'utilisateur pour créer un cartId
   const getIP = async () => {
@@ -29,7 +31,7 @@ function App() {
   }, [])
 
 
-  const cartIdContext = { cartId, setcartId }
+  const cartIdContext = { cartId, setcartId, cart, setCart, cartItems, setcartItems }
   return (
     <AuthContextProvider>
       <CartContext.Provider value={cartIdContext}>

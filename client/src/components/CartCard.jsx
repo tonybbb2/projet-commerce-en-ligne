@@ -1,10 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState, useContext } from "react"
 import { FaTrash } from 'react-icons/fa';
 import { AiOutlinePlus } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
+import { CartContext } from "../App"
+import { db } from "../Firebase"
+import { doc, updateDoc, deleteField, getDoc } from "firebase/firestore"
 
 
 const CartCard = ({ title, color, size, pricing, cover, quantity }) => {
+
+    const cartContext = useContext(CartContext);
+
+    function removeFromCart() {
+        const newCart = { ...cartContext.cart };
+        console.log(newCart);
+        delete newCart[title + " " + color + " " + size];
+        cartContext.setCart(newCart);
+        cartContext.setcartItems([]);
+    }
+
+    async function deleteFromCart() {
+        if (cartContext.cartId != 'cart') {
+            const itemRef = doc(db, cartContext.cartId, 'cart');
+            await updateDoc(itemRef, {
+                [title + " " + color + " " + size]: deleteField()
+            });
+            removeFromCart();
+        }
+    }
+
     return (
         <div>
             <div className="flex flex-row">
@@ -20,7 +44,7 @@ const CartCard = ({ title, color, size, pricing, cover, quantity }) => {
                     <span className="text-white ">{pricing} USD</span>
                 </div>
                 <div className="items-end">
-                    <AiOutlineClose className="w-6 h-6 text-white" />
+                    <button onClick={deleteFromCart}><AiOutlineClose className="w-6 h-6 text-white" /></button>
                 </div>
             </div>
             {/* <div className="flex flex-row">

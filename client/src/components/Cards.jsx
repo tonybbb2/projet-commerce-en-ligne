@@ -15,7 +15,7 @@ const Cards = ({ cover, title, color, pricing, label }) => {
     async function addToCart(size) {
         if (cartContext.cartId != 'cart') {
             const data = {
-                [title]: [
+                [title + " " + color + " " + size]: [
                     {
                         Titre: title,
                         Cover: cover,

@@ -7,8 +7,6 @@ import CartCard from "./CartCard"
 function Checkout() {
 
     const cartContext = useContext(CartContext);
-    const [cart, setCart] = useState([]);
-    const [cartItems, setcartItems] = useState([]);
     const [subtotalPrice, setsubtotalPrice] = useState(0);
     const [totalPrice, settotalPrice] = useState(0);
 
@@ -30,35 +28,36 @@ function Checkout() {
             const result = fetchCart()
                 .catch(console.error)
             result.then(value => {
-                setCart(value);
+                cartContext.setCart(value);
             })
         }
     }, [cartContext.cartId])
 
     useEffect(() => {
+
         //Reformatter les données provenant de firebase
-        for (const propertyName in cart) {
-            if (Object.hasOwnProperty.call(cart, propertyName)) {
-                const itemsArray = cart[propertyName];
+        for (const propertyName in cartContext.cart) {
+            if (Object.hasOwnProperty.call(cartContext.cart, propertyName)) {
+                const itemsArray = cartContext.cart[propertyName];
 
                 for (const item of itemsArray) {
                     const { Titre, Cover, Color, Size, Quantity, Price } = item;
-                    setcartItems(prevCartItems => [...prevCartItems, item]);
+                    cartContext.setcartItems(prevCartItems => [...prevCartItems, item]);
                     console.log(Titre, Cover, Color, Size, Quantity, Price);
 
                 }
             }
         }
-    }, [cart])
+    }, [cartContext.cart])
 
     // Calculate total price
     useEffect(() => {
-        if (cartItems.length > 0) {
-            const totalPrice = cartItems.reduce((acc, item) => acc + parseFloat(item.Price), 0);
+        if (cartContext.cartItems.length > 0) {
+            const totalPrice = cartContext.cartItems.reduce((acc, item) => acc + parseFloat(item.Price), 0);
             settotalPrice(totalPrice.toFixed(2));
-            setsubtotalPrice((totalPrice+20).toFixed(2))
+            setsubtotalPrice((totalPrice + 20).toFixed(2))
         }
-    }, [cartItems]);
+    }, [cartContext.cartItems]);
 
 
     return (
@@ -170,7 +169,7 @@ function Checkout() {
                             <div className="rounded-xl p-[2rem] pb-[1rem] border border-secondary/20 shadow-xl transition-all duration-[1s] ease-out-expo active:scale-95 my-5 border-neutral-500">
                                 <div className="mt-8">
                                     <div className="flex flex-col space-y-4">
-                                        {cartItems && cartItems.length > 0 && cartItems.map((item, index) => (
+                                        {cartContext.cartItems && cartContext.cartItems.length > 0 && cartContext.cartItems.map((item, index) => (
                                             <CartCard
                                                 key={index}
                                                 title={item.Titre}
@@ -181,11 +180,11 @@ function Checkout() {
                                                 quantity={item.Quantity}
                                             />
                                         ))}
-                                        {(!cartItems || cartItems.length === 0) && <p className="text-xl font-bold text-white">Your cart is empty</p>}
+                                        {(!cartContext.cartItems || cartContext.cartItems.length === 0) && <p className="text-xl font-bold text-white">Your cart is empty</p>}
                                     </div>
                                 </div>
                                 <div className="flex p-4 mt-4">
-                                    <h2 className="text-xl font-bold text-white">{cartItems.length} ITEMS</h2>
+                                    <h2 className="text-xl font-bold text-white">{cartContext.cartItems.length} ITEMS</h2>
                                 </div>
                                 <div
                                     className="flex items-center w-full py-4 text-sm font-semibold border-b border-neutral-500 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0 text-white">
