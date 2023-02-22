@@ -10,7 +10,8 @@ import { Cart } from "./components/Cart"
 import { Checkout } from "./components/Checkout"
 import { Collections } from "./components/Collections"
 import { MenProducts } from "./components/MenProducts";
-import axios from 'axios'
+import { v4 as uuidv4 } from 'uuid';
+import Cookies from 'js-cookie';
 
 export const CartContext = React.createContext();
 
@@ -19,16 +20,18 @@ function App() {
   const [cart, setCart] = useState([]);
   const [cartItems, setcartItems] = useState([]);
 
-  //Prend l'adresse ip de l'utilisateur pour créer un cartId
-  const getIP = async () => {
-    const res = await axios.get('https://geolocation-db.com/json/')
-    var ip = res.data.IPv4.replaceAll(".", "");
-    setcartId('cart' + ip);
-  }
+  useEffect(() => {
+    let id = Cookies.get('cart');
+    if (!id) {
+      let id = ('cart' + uuidv4()).replaceAll("-", "");
+      Cookies.set('cart', id, { expires: 365 });
+    }
+    setcartId(id);
+  }, []);
 
   useEffect(() => {
-    getIP()
-  }, [])
+    console.log(cartId);
+  }, [cartId]);
 
 
   const cartIdContext = { cartId, setcartId, cart, setCart, cartItems, setcartItems }
