@@ -11,7 +11,14 @@ export const Collections = () => {
   const [product, setProduct] = useState([])
 
   const location = useLocation()
-  useEffect(() => { setProduct(location.state.data) }, [])
+  useEffect(() => { 
+    resetData([]) 
+    resetData(location.state.data) 
+  }, [])
+
+  function resetData(newdata){
+    setProduct(newdata)
+  }
 
   console.log(location)
 

@@ -280,7 +280,7 @@ export const Navbar = () => {
                                             </Link>
                                             </li>
                                             <li>
-                                                <Link to="/collections" state={{ category: 'Joggers', data: menproduct.joggers_big }}>
+                                                <Link to="/collections" state={{ category: 'Joggers', data: menproduct.Joggers[0].joggers_big }}>
                                                     Joggers
                                                 </Link>
                                             </li>
@@ -288,7 +288,7 @@ export const Navbar = () => {
                                                 Short Sleeves
                                             </li>
                                             <li>
-                                                <Link to="/collections" state={{ category: 'Tank Tops', data: menproduct.tanks_big }}>
+                                                <Link to="/collections" state={{ category: 'Tank Tops', data: menproduct.Tanks[0].tanks_big }}>
                                                     Tank Tops
                                                 </Link>
                                             </li>
