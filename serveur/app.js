@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 require('dotenv').config()
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // Packages nécessaires pour la documentation Swagger
 const YAML = require('yamljs')
@@ -10,7 +10,7 @@ const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = YAML.load('documentation.yaml')
 
 // Importation des fichiers de routes
-const login = require('./routes/login.js');
+const stripe = require('./routes/stripe');
 
 // Middlewares nécessaires à l'application
 app.use(cors());
@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.static(__dirname))
 
 // Routes
-app.use('/login', login);
+app.use('/stripe', stripe);
 
 // Route pour la documentation
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
