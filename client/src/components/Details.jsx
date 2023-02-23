@@ -33,7 +33,7 @@ function Details() {
             .catch(console.error)
         result.then(value => {
             console.log(value)
-            setProduct(value.Bra_big_image)
+            setProduct(value)
         })
     }, [])
 
