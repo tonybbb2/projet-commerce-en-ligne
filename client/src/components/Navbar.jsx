@@ -89,7 +89,7 @@ export const Navbar = () => {
         const result = fetchClothes()
             .catch(console.error)
         result.then(value => {
-            console.log(value)
+            //console.log(value)
             setmenProduct(value)
         })
     }, [])

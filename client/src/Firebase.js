@@ -116,28 +116,27 @@ function write() {
 
     console.log("HELLO WORLD")
 
-    // Delete all documents in the collection
-    const deleteFirestoreData = async () => {
+    // Updates documents 
+    const updateFirestoreData = async () => {
+        // Deletes all documents in the collection
         const querySnapshot = await getDocs(collection(db, "clothes2"));
-        //querySnapshot.forEach((doc) => console.log(doc.data()));
         const deletePromises = [];
         querySnapshot.forEach((doc) => {
             deletePromises.push(deleteDoc(doc.ref));
         });
         await Promise.all(deletePromises);
+
         console.log("Documents deleted successfully.");
 
+    
         // Adds all documents to the collection
         data.forEach(async (doc) => {
             await addDoc(collection(db, "clothes2"), doc);
-            console.log(doc)
         });
 
         console.log("Documents added successfully.");
     }
-    deleteFirestoreData()
-
-
+    updateFirestoreData()
 }
 
 write()
