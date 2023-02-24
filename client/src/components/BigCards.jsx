@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const BigCards = ({ img, id }) => {
-  console.log(`ID ${id}`)
+const BigCards = ({ img, id, color }) => {
+
   return (
     <Link to={`/details/${id}`}>
-      <img src={img} alt="" className='rounded-xl' />
+      <img src={img} alt={id} className='rounded-xl' />
     </Link>
   )
 }
