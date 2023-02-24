@@ -29,10 +29,13 @@ function MenProducts() {
 
         const fetchClothes = async () => {
             const querySnapshot = await getDocs(collection(db, "clothes2"));
+
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
                 console.log(doc.id, " => ", doc.data());
             });
+
+            setProducts(querySnapshot)
         }
 
         fetchClothes()
@@ -44,16 +47,16 @@ function MenProducts() {
                 <h1 className='text-4xl text-center py-12 uppercase font-semibold text-white italic'>Men Products</h1>
                 <div className='flex justify-center'>
                     <div className='w-3/4 h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 '>
-                        {/* {
+                        {
                             products &&
-                            Object.entries(products).map(([id, data], i) => {
-                                data = data[0]
-                                console.log(data)
+                            products.docs.map(doc => {
+                                const product = doc.data()
+
                                 return (
-                                    <BigCards img={""} key={i} />
+                                    <BigCards img={product.colorways[0].imgURL} key={doc.id} id={doc.id} />
                                 )
                             })
-                        } */}
+                        }
                     </div>
                 </div>
             </div>

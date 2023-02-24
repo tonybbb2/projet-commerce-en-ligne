@@ -8,9 +8,9 @@ const data = [
         colorways: [
             {
                 color: "Fog Blue",
-                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/FogBlueMOREMeshShort5_150x.jpg?v=1669290073",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/FogBlueMOREMeshShort5_1000x.jpg?v=1669290073",
                 imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/FogBlueMOREMeshShort1_1000x.jpg?v=1668812602",
-                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/FogBlueMOREMeshShort5_1000x.jpg?v=1669290073"
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/FogBlueMOREMeshShort5_150x.jpg?v=1669290073"
             },
             {
                 color: "Black",
