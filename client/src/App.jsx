@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log(cartId);
+    //console.log(cartId);
   }, [cartId]);
 
 

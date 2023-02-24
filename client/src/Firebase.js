@@ -1,7 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { doc, getFirestore, updateDoc } from "firebase/firestore";
+import { doc, getFirestore, updateDoc, addDoc, collection, getDocs, deleteDoc } from "firebase/firestore";
+import { data } from "./data"
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,7 +26,8 @@ export const db = getFirestore(app);
 
 const urls_homme = doc(db, 'clothes/urls_homme')
 
-function write(){
+function write() {
+    /*
     const doc = {
         "shorts_more_small": [
             "https:////cdn.shopify.com/s/files/1/0667/0133/products/FogBlueMOREMeshShort5_150x.jpg?v=1669290073",
@@ -109,6 +112,32 @@ function write(){
         ]
     }
     updateDoc(urls_homme, doc)
+    */
+
+    console.log("HELLO WORLD")
+
+    // Delete all documents in the collection
+    const deleteFirestoreData = async () => {
+        const querySnapshot = await getDocs(collection(db, "clothes2"));
+        //querySnapshot.forEach((doc) => console.log(doc.data()));
+        const deletePromises = [];
+        querySnapshot.forEach((doc) => {
+            deletePromises.push(deleteDoc(doc.ref));
+        });
+        await Promise.all(deletePromises);
+        console.log("Documents deleted successfully.");
+
+        // Adds all documents to the collection
+        data.forEach(async (doc) => {
+            await addDoc(collection(db, "clothes2"), doc);
+            console.log(doc)
+        });
+
+        console.log("Documents added successfully.");
+    }
+    deleteFirestoreData()
+
+
 }
 
-// write()
+write()

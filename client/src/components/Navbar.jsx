@@ -58,7 +58,7 @@ export const Navbar = () => {
         const result = fetchClothes()
             .catch(console.error)
         result.then(value => {
-            console.log(value)
+            //console.log(value)
             setProduct(value)
 
         })
@@ -68,7 +68,7 @@ export const Navbar = () => {
         const b = product?.Bra_big_image.concat(product?.Bra_small_icon)
         setBra(b)
 
-        console.log(allbras)
+        //console.log(allbras)
 
     }, [])
 
