@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.static(__dirname))
 
 // Routes
-app.use('/stripe', stripe);
+app.use('/create-payment-intent', stripe);
 
 // Route pour la documentation
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument))

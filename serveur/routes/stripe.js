@@ -5,13 +5,16 @@ const stripe = require("stripe")("sk_test_51Me6rsLc792vO51u5oyIarM91Q2AfGLp8LZ3J
 
 
 // Create a Payment Intent (returns the client with a temporary secret)
-router.post("/create-payment-intent", async (req, res) => {
+router.post("/", async (req, res) => {
+    console.log('Received create-payment-intent request:', req.body);
     const { price } = req.body;
 
     const paymentIntent = await stripe.paymentIntents.create({
         amount: price,
         currency: "usd",
     });
+
+    console.log('Payment intent created:', paymentIntent);
 
     res.send({
         clientSecret: paymentIntent.client_secret,

@@ -1,30 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-
-const totalPrice = 1400; // this means 14 usd and can also be calculated at the backend
+import { CartContext } from "../App"
 
 export const MyCheckoutForm = () => {
 
+    const cartContext = useContext(CartContext);
     const [clientSecret, setClientSecret] = useState("");
     const stripe = useStripe();
     const elements = useElements();
+    const totalPrice = Math.round(cartContext.totalPrice * 100);
 
-    // STEP 1: create a payment intent and getting the secret
     useEffect(() => {
-        fetch("http://localhost:4000/create-payment-intent", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ price: totalPrice }),
-        })
-            .then(res => res.json())
-            .then((data) => {
-                setClientSecret(data.clientSecret);  // <-- setting the client secret here
-            });
-    }, []);
+        console.log(cartContext.totalPrice);
+        console.log(totalPrice);
+    }, [cartContext.totalPrice]);
 
-    // STEP 2: make the payment after filling the form properly
+    // Create a payment intent and getting the secret
+    useEffect(() => {
+        if (totalPrice != 0) {
+            fetch("http://localhost:4000/create-payment-intent", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ price: totalPrice }),
+            })
+                .then(res => res.json())
+                .then((data) => {
+                    setClientSecret(data.clientSecret);
+                });
+        }
+    }, [cartContext.totalPrice]);
+
+
+
+    // Make the payment after filling the form properly
     const makePayment = async () => {
         const payload = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {

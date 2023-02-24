@@ -19,6 +19,7 @@ function App() {
   const [cartId, setcartId] = useState('cart');
   const [cart, setCart] = useState([]);
   const [cartItems, setcartItems] = useState([]);
+  const [totalPrice, settotalPrice] = useState(0);
 
   useEffect(() => {
     let id = Cookies.get('cart');
@@ -34,7 +35,7 @@ function App() {
   }, [cartId]);
 
 
-  const cartIdContext = { cartId, setcartId, cart, setCart, cartItems, setcartItems }
+  const cartIdContext = { cartId, setcartId, cart, setCart, cartItems, setcartItems, totalPrice, settotalPrice }
   return (
     <AuthContextProvider>
       <CartContext.Provider value={cartIdContext}>
