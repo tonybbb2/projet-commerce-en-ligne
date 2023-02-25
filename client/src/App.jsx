@@ -18,24 +18,24 @@ export const CartContext = React.createContext();
 function App() {
   const [cartId, setcartId] = useState('cart');
   const [cart, setCart] = useState([]);
-  const [cartItems, setcartItems] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
   const [totalPrice, settotalPrice] = useState(0);
 
-  useEffect(() => {
-    let id = Cookies.get('cart');
-    if (!id) {
-      let id = ('cart' + uuidv4()).replaceAll("-", "");
-      Cookies.set('cart', id, { expires: 365 });
-    }
-    setcartId(id);
-  }, []);
+  // useEffect(() => {
+  //   let id = Cookies.get('cart');
+  //   if (!id) {
+  //     let id = ('cart' + uuidv4()).replaceAll("-", "");
+  //     Cookies.set('cart', id, { expires: 365 });
+  //   }
+  //   setcartId(id);
+  // }, []);
 
-  useEffect(() => {
-    //console.log(cartId);
-  }, [cartId]);
+  // useEffect(() => {
+  //   //console.log(cartId);
+  // }, [cartId]);
 
 
-  const cartIdContext = { cartId, setcartId, cart, setCart, cartItems, setcartItems, totalPrice, settotalPrice }
+  const cartIdContext = { cartId, setcartId, cart, setCart, cartItems, setCartItems, totalPrice, settotalPrice }
   return (
     <AuthContextProvider>
       <CartContext.Provider value={cartIdContext}>

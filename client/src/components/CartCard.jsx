@@ -3,31 +3,26 @@ import { FaTrash } from 'react-icons/fa';
 import { AiOutlinePlus } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
 import { CartContext } from "../App"
-import { db } from "../Firebase"
-import { doc, updateDoc, deleteField, getDoc } from "firebase/firestore"
+import Cookies from "js-cookie";
 
 
 const CartCard = ({ title, color, size, pricing, cover, quantity }) => {
 
     const cartContext = useContext(CartContext);
 
-    function removeFromCart() {
-        const newCart = { ...cartContext.cart };
-        console.log(newCart);
-        delete newCart[title + " " + color + " " + size];
-        cartContext.setCart(newCart);
-        cartContext.setcartItems([]);
-    }
+    // Remove an item from the cart based on its name, size, and color
+    const deleteFromCart = () => {
+        const newCartItems = cartContext.cartItems.filter((item) => {
+            return !(item.Titre === title && item.Size === size && item.Color === color);
+        });
+        cartContext.setCartItems(newCartItems);
+    };
 
-    async function deleteFromCart() {
-        if (cartContext.cartId != 'cart') {
-            const itemRef = doc(db, cartContext.cartId, 'cart');
-            await updateDoc(itemRef, {
-                [title + " " + color + " " + size]: deleteField()
-            });
-            removeFromCart();
-        }
-    }
+    // Save cart data to cookies whenever the cartItems state changes
+    useEffect(() => {
+        Cookies.set("cartItems", JSON.stringify(cartContext.cartItems));
+    }, [cartContext.cartItems]);
+
 
     return (
         <div>

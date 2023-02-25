@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react"
 import { CartContext } from "../App"
 import { db } from "../Firebase"
 import CartCard from "./CartCard"
-
+import Cookies from "js-cookie";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { MyCheckoutForm } from "./CheckoutForm";
@@ -12,53 +12,20 @@ const stripePromise = loadStripe("pk_test_51Me6rsLc792vO51uOCXiHqlfRk1GG4zaE1Aii
     locale: 'en'
 });
 
-
 function Checkout() {
 
     const cartContext = useContext(CartContext);
     const [subtotalPrice, setsubtotalPrice] = useState(0);
 
 
-
+    // Load cart data from cookies
     useEffect(() => {
-        // Function to fetch and set the cart
-        if (cartContext.cartId != 'cart') {
-
-            const cartRef = doc(db, `${cartContext.cartId}/cart`)
-
-            const fetchCart = async () => {
-                const cart = await getDoc(cartRef)
-                if (cart.exists()) {
-                    return ('Document data:', cart.data());
-                } else {
-                    return ('No such document!');
-                }
-            }
-
-            const result = fetchCart()
-                .catch(console.error)
-            result.then(value => {
-                cartContext.setCart(value);
-            })
+        const savedCartItems = Cookies.get("cartItems");
+        if (savedCartItems) {
+            cartContext.setCartItems(JSON.parse(savedCartItems));
         }
-    }, [cartContext.cartId])
+    }, []);
 
-    useEffect(() => {
-
-        //Reformatter les données provenant de firebase
-        for (const propertyName in cartContext.cart) {
-            if (Object.hasOwnProperty.call(cartContext.cart, propertyName)) {
-                const itemsArray = cartContext.cart[propertyName];
-
-                for (const item of itemsArray) {
-                    const { Titre, Cover, Color, Size, Quantity, Price } = item;
-                    cartContext.setcartItems(prevCartItems => [...prevCartItems, item]);
-                    console.log(Titre, Cover, Color, Size, Quantity, Price);
-
-                }
-            }
-        }
-    }, [cartContext.cart])
 
     // Calculate total price
     useEffect(() => {

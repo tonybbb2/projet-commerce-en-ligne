@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { db } from '../Firebase'
 import { getDoc, doc, updateDoc, setDoc } from 'firebase/firestore'
 import { CartContext } from "../App"
+import Cookies from "js-cookie";
 
 const Cards = ({ cover, title, color, pricing, label }) => {
 
@@ -12,26 +13,36 @@ const Cards = ({ cover, title, color, pricing, label }) => {
         // get the id add
     }
 
-    async function addToCart(size) {
-        if (cartContext.cartId != 'cart') {
-            const data = {
-                [title + " " + color + " " + size]: [
-                    {
-                        Titre: title,
-                        Cover: cover,
-                        Color: color,
-                        Size: size,
-                        Quantity: '1',
-                        Price: pricing,
-                    }
+    const addToCart = (size) => {
+        const newItem = {
+            Titre: title,
+            Cover: cover,
+            Color: color,
+            Size: size,
+            Quantity: 1,
+            Price: pricing
+        };
 
-                ]
+        // Check si il y a deja le meme item dans le panier
+        const existingItemIndex = cartContext.cartItems.findIndex(
+            (item) => item.Titre === title && item.Size === size && item.Color === color
+        );
 
-            }
-
-            const res = await setDoc(doc(db, cartContext.cartId, 'cart'), data, { merge: true });
+        if (existingItemIndex >= 0) {
+            // Ajoute 1 à la quantité de l'item existant
+            const updatedCartItems = [...cartContext.cartItems];
+            updatedCartItems[existingItemIndex].Quantity += 1;
+            cartContext.setCartItems(updatedCartItems);
+        } else {
+            // Sinon, ajoute nouvel item au panier
+            cartContext.setCartItems([...cartContext.cartItems, newItem]);
         }
-    }
+    };
+
+    // Save cart data to cookies whenever the cartItems state changes
+    useEffect(() => {
+        Cookies.set("cartItems", JSON.stringify(cartContext.cartItems));
+    }, [cartContext.cartItems]);
 
 
     return (

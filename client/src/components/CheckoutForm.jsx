@@ -6,31 +6,32 @@ export const MyCheckoutForm = () => {
 
     const cartContext = useContext(CartContext);
     const [clientSecret, setClientSecret] = useState("");
+    const [email, setEmail] = useState("");
     const stripe = useStripe();
     const elements = useElements();
     const totalPrice = Math.round(cartContext.totalPrice * 100);
 
-    useEffect(() => {
-        console.log(cartContext.totalPrice);
-        console.log(totalPrice);
-    }, [cartContext.totalPrice]);
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
 
     // Create a payment intent and getting the secret
     useEffect(() => {
-        if (totalPrice != 0) {
+        if (totalPrice != 0 && email != '') {
             fetch("http://localhost:4000/create-payment-intent", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ price: totalPrice }),
+                body: JSON.stringify({ price: totalPrice, receipt_email: email }),
             })
                 .then(res => res.json())
                 .then((data) => {
                     setClientSecret(data.clientSecret);
                 });
         }
-    }, [cartContext.totalPrice]);
+    }, [cartContext.totalPrice, email]);
 
 
 
@@ -64,7 +65,7 @@ export const MyCheckoutForm = () => {
                     <div className="w-full">
                         <label
                             className="block mb-3 text-sm font-semibold text-neutral-300">Email</label>
-                        <input name="Last Name" type="text" placeholder="Email"
+                        <input type="email" id="email" value={email} onChange={handleEmailChange} placeholder="Email"
                             className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
                     </div>
                 </div>
