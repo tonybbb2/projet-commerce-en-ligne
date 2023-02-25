@@ -32,7 +32,7 @@ function Details() {
                 setColor(urlColor)
             } else {
                 // Else, set it to first color in colorways
-                setColor(docSnap.data().colorways[0].color)
+                setColor(docSnap.data().colorways[0].color.toLowerCase().replace(/\s/g, ''))
             }
         }
 
@@ -78,7 +78,7 @@ function Details() {
                                                         className="lazyload-fade absolute-tl z-[2] wh-full-cover rounded-[4px] ls-is-cached lazyloaded"
                                                         src={colorway.imgIconURL}
                                                         alt={colorway.color}
-                                                        onClick={e => setColor(colorway.color)}
+                                                        onClick={e => setColor(colorway.color.toLowerCase().replace(/\s/g, ''))}
                                                     />
                                                 </div>
                                             )

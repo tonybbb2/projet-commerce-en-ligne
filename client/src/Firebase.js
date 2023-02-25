@@ -137,4 +137,4 @@ function write() {
     updateFirestoreData()
 }
 
-write()
+//write()

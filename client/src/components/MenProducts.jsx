@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { db } from '../Firebase'
-import { getDoc, doc, updateDoc, getDocs, collection, query, where } from 'firebase/firestore'
+import { getDocs, collection, query, where } from 'firebase/firestore'
 import BigCards from "./BigCards"
 
 function MenProducts() {
@@ -31,7 +31,7 @@ function MenProducts() {
                     <div className='w-3/4 h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 '>
                         {
                             products &&
-                            products.docs.map((doc, index) => {
+                            products.docs.map(doc => {
                                 const product = doc.data()
 
                                 return product.colorways.map(colorway =>
