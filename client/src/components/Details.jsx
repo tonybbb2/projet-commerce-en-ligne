@@ -45,16 +45,23 @@ function Details() {
                 {
                     product &&
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                        {/* Product image */}
-                        <img
-                            alt="Product Image"
-                            className="lg:w-1/2 w-full object-cover object-center rounded-[20px] border"
-                            src={product.colorways[0].imgURL}
-                        />
-
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                            {/* Product image */}
+                            <img
+                                alt="Product Image"
+                                className="lg:w-4/2 w-full object-cover object-center rounded-[20px] border mb-5"
+                                src={product.colorways.find(colorway => colorway.color.toLowerCase() == color.toLowerCase()).imgURL}
+                            />
+                            <img
+                                alt="Product Image"
+                                className="lg:w-4/2 w-full object-cover object-center rounded-[20px] border"
+                                src={product.colorways.find(colorway => colorway.color.toLowerCase() == color.toLowerCase()).imgSideURL}
+                            />
+                        </div>
+
+                        <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 static">
                             {/*  Title and description */}
-                            <h2 className="text-sm title-font text-gray-500 tracking-widest">By Fitness Rats</h2>
+                            <h2 className="text-sm title-font text-gray-500 tracking-widest">{color}</h2>
                             <h1 className="text-gray-300 text-3xl title-font font-medium mb-5">{product.title}</h1>
                             <p className="leading-relaxed">{product.description}</p>
 
@@ -69,7 +76,9 @@ function Details() {
                                                     <img
                                                         className="lazyload-fade absolute-tl z-[2] wh-full-cover rounded-[4px] ls-is-cached lazyloaded"
                                                         src={colorway.imgIconURL}
-                                                        alt={colorway.color} />
+                                                        alt={colorway.color}
+                                                        onClick={e => setColor(colorway.color)}
+                                                    />
                                                 </div>
                                             )
                                         })
