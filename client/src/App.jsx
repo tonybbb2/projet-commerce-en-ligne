@@ -9,7 +9,7 @@ import { Details } from './components/Details'
 import { Cart } from "./components/Cart"
 import { Checkout } from "./components/Checkout"
 import { Collections } from "./components/Collections"
-import { MenProducts } from "./components/MenProducts";
+import { ProductsByGender } from "./components/ProductsByGender";
 import { v4 as uuidv4 } from 'uuid';
 import Cookies from 'js-cookie';
 
@@ -49,7 +49,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/details/:id" element={<Details />} />
             <Route path="/collections" element={<Collections />} />
-            <Route path="/products/men" element={<MenProducts />} />
+            <Route path="/products/:gender" element={<ProductsByGender />} />
           </Routes>
         </BrowserRouter>
       </CartContext.Provider>
