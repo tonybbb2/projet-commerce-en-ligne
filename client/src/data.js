@@ -5,6 +5,7 @@ const data = [
         type: "shorts",
         gender: "men",
         price: 52.00,
+        sizes: ["S", "M", "L", "XL"],
         colorways: [
             {
                 color: "Fog Blue",
