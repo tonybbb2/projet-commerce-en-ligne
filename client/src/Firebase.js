@@ -114,8 +114,6 @@ function write() {
     updateDoc(urls_homme, doc)
     */
 
-    console.log("HELLO WORLD")
-
     // Updates documents 
     const updateFirestoreData = async () => {
         // Deletes all documents in the collection
@@ -139,4 +137,4 @@ function write() {
     updateFirestoreData()
 }
 
-//write()
+write()

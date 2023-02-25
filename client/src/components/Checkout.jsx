@@ -1,4 +1,3 @@
-import { doc, getDoc } from "firebase/firestore"
 import React, { useEffect, useState, useContext } from "react"
 import { CartContext } from "../App"
 import { db } from "../Firebase"

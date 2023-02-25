@@ -18,7 +18,7 @@ export const MyCheckoutForm = () => {
 
     // Create a payment intent and getting the secret
     useEffect(() => {
-        if (totalPrice != 0 && email != '') {
+        if (totalPrice !== 0 && email !== '') {
             fetch("http://localhost:4000/create-payment-intent", {
                 method: "POST",
                 headers: {
@@ -31,13 +31,13 @@ export const MyCheckoutForm = () => {
                     setClientSecret(data.clientSecret);
                 });
         }
-    }, [cartContext.totalPrice, email]);
+    }, [cartContext.totalPrice, email, totalPrice]);
 
 
 
     // Make the payment after filling the form properly
     const makePayment = async () => {
-        const payload = await stripe.confirmCardPayment(clientSecret, {
+        await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: elements.getElement(CardElement),
             },

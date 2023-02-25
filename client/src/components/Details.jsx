@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useContext } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
 import { db } from '../Firebase'
-import { getDoc, doc, updateDoc, getDocs, collection, query, where } from 'firebase/firestore'
-import { CartContext } from "../App"
+import { getDoc, doc } from 'firebase/firestore'
+// import { CartContext } from "../App"
 
 function Details() {
-    const cartContext = useContext(CartContext);
+    //const cartContext = useContext(CartContext);
 
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const [product, setProduct] = useState(null)
     const [selectedSize, setSelectedSize] = useState("")
     const [color, setColor] = useState(null)
@@ -28,6 +28,7 @@ function Details() {
             // Set URL colorway, if there is
             const urlColor = searchParams.get("color")
             if (urlColor) {
+                console.log(urlColor)
                 setColor(urlColor)
             } else {
                 // Else, set it to first color in colorways
@@ -36,7 +37,7 @@ function Details() {
         }
 
         fetchProduct()
-    }, [])
+    }, [id, searchParams])
 
 
     return (
@@ -48,14 +49,14 @@ function Details() {
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                             {/* Product image */}
                             <img
-                                alt="Product Image"
+                                alt="Product"
                                 className="lg:w-4/2 w-full object-cover object-center rounded-[20px] border mb-5"
-                                src={product.colorways.find(colorway => colorway.color.toLowerCase() == color.toLowerCase()).imgURL}
+                                src={product.colorways.find(colorway => colorway.color.toLowerCase().replace(/\s/g, '') === color.toLowerCase()).imgURL}
                             />
                             <img
-                                alt="Product Image"
+                                alt="Product 2"
                                 className="lg:w-4/2 w-full object-cover object-center rounded-[20px] border"
-                                src={product.colorways.find(colorway => colorway.color.toLowerCase() == color.toLowerCase()).imgSideURL}
+                                src={product.colorways.find(colorway => colorway.color.toLowerCase().replace(/\s/g, '') === color.toLowerCase()).imgSideURL}
                             />
                         </div>
 
