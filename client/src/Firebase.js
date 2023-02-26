@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { doc, getFirestore, updateDoc, addDoc, collection, getDocs, deleteDoc } from "firebase/firestore";
+import { getFirestore, addDoc, collection, getDocs, deleteDoc } from "firebase/firestore";
 import { data } from "./data"
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -24,7 +24,7 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-const urls_homme = doc(db, 'clothes/urls_homme')
+//const urls_homme = doc(db, 'clothes/urls_homme')
 
 function write() {
     /*
@@ -137,4 +137,4 @@ function write() {
     updateFirestoreData()
 }
 
-//write()
+//write() 

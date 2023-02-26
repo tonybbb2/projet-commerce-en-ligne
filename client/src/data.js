@@ -169,6 +169,184 @@ const data = [
             },
         ]
     },
+    {
+        title: "AMPLIFY SHORT 4.5inch",
+        description: "Women's Seamless Scrunch 4.5inch Short",
+        type: "shortshorts",
+        gender: "women",
+        price: 52.00,
+        sizes: ["S", "M", "L", "XL"],
+        colorways: [
+            {
+                color: "Chocolate",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyRestockMay310129_1000x.jpg?v=1654661505",
+                imgSideURL:  "https://cdn.shopify.com/s/files/1/0667/0133/products/SeamlessandSurface93_1000x.jpg?v=1668811061",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyShort4.5Chocolate2_400x.jpg?v=1673378015",
+            },
+            {
+                color: "Scarlet",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyShort4.5Scarlet5_1000x.jpg?v=1673378341",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyShort4.5Scarlet3_1000x.jpg?v=1673378341",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyShort4.5Scarlet1_5f42ff3c-0dcf-45bb-971b-7506542f5463_400x.jpg?v=1673378341",
+            },
+            {
+                color: "Utility Grey",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyShortUtilityGrey1_34c88c3e-ddde-401b-a4d1-cd81eb5974b1_1000x.jpg?v=1665520530",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyShortUtilityGrey4_05d41b8d-64ec-465e-9cbd-f8e329326daa_1000x.jpg?v=1665520531",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyShortUtilityGrey3_bd07deaa-1967-4842-be39-a83440db1fe2_400x.jpg?v=1668810383",
+            },
+            {
+                color: "True Indigo",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyShortTrueIndigo1_d4905ee9-90bf-49b8-a5ae-1a334df1a788_1000x.jpg?v=1665520487",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyShortTrueIndigo4_f48647c7-594a-4452-890c-5f5761f06290_1000x.jpg?v=1665520487",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyShortTrueIndigo2_df253cbb-04e6-4684-b6db-8f3cd5e34c23_400x.jpg?v=1668810378"
+            },
+            {
+                color: "Misty Lilac",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/SeamlessandSurface93_1000x.jpg?v=1668811061",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/SeamlessandSurface96_1000x.jpg?v=1668811061",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/SeamlessandSurface95_400x.jpg?v=1668811179"
+            },
+            {
+                color: "Hazelnut",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/SeamlessandSurface116_1000x.jpg?v=1668811053",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/SeamlessandSurface119_1000x.jpg?v=1668811053",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/SeamlessandSurface118_400x.jpg?v=1668811148"
+            },
+        ]
+    },
+    {
+        title: "AMPLIFY LEGGINGS",
+        description: "Women's Seamless Scrunch Legging",
+        type: "leggings",
+        gender: "women",
+        price: 72.00,
+        sizes: ["S", "M", "L", "XL"],
+        colorways: [
+            {
+                color: "Mandarin",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/4U8A4565_1000x.jpg?v=1639155413",
+                imgSideURL:  "https://cdn.shopify.com/s/files/1/0667/0133/products/4U8A4567_1000x.jpg?v=1639110765",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/4U8A4567_150x.jpg?v=1639110765",
+            },
+            {
+                color: "Whale Blue",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/SeamlessandSurface21_1000x.jpg?v=1673547152",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/SeamlessandSurface23_1000x.jpg?v=1673545745",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/SeamlessandSurface23_150x.jpg?v=1673545745",
+            },
+            {
+                color: "Scarlet",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/ScarletAmplifyLegging1_1000x.jpg?v=1673547094",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/ScarletAmplifyLegging3_1000x.jpg?v=1670366685",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/ScarletAmplifyLegging3_150x.jpg?v=1670366685",
+            },
+            {
+                color: "Pier Blue",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyRestockMay310070_fd6223a1-9fa5-4252-afde-c1e83789f2c0_1000x.jpg?v=1654662548",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyRestockMay310073_a4e013dd-c315-40d4-af70-847f0a3ba01b_1000x.jpg?v=1654662548",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyRestockMay310073_a4e013dd-c315-40d4-af70-847f0a3ba01b_150x.jpg?v=1654662548"
+            },
+            {
+                color: "True Indigo",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyLeggingTrueIndigo4_1000x.jpg?v=1665520136",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyLeggingTrueIndigo2_1000x.jpg?v=1665520136",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyLeggingTrueIndigo2_150x.jpg?v=1665520136"
+            },
+            {
+                color: "Pixel Pink",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyLeggingPixelPink1_1000x.jpg?v=1665520240",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyLeggingPixelPink4_1000x.jpg?v=1665520240",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyLeggingPixelPink4_150x.jpg?v=1665520240"
+            },
+            {
+                color: "Autumn",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyLeggingAutumn4_1000x.jpg?v=1674858289",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyLeggingAutumn3_1000x.jpg?v=1674858289",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyLeggingAutumn3_150x.jpg?v=1674858289"
+            },
+        ]
+    },
+    {
+        title: "STRATUS LONG SLEEVE CROP",
+        description: "Women's Cropped Seamless Long Sleeve",
+        type: "longsleeve",
+        gender: "women",
+        price: 46.00,
+        sizes: ["S", "M", "L", "XL"],
+        colorways: [
+            {
+                color: "Autumn",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropAtumn1_1000x.jpg?v=1674866821",
+                imgSideURL:  "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropAtumn3_1000x.jpg?v=1674866821",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropAtumn1_150x.jpg?v=1674866821",
+            },
+            {
+                color: "Chai",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropChai1_1000x.jpg?v=1674866871",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropChai3_1000x.jpg?v=1674866871",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropChai1_150x.jpg?v=1674866871",
+            },
+            {
+                color: "Oak",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropOak1_1000x.jpg?v=1674866976",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropOak3_1000x.jpg?v=1674866976",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropOak1_150x.jpg?v=1674866976",
+            },
+            {
+                color: "Midnight",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropMidnight1_1000x.jpg?v=1674866893",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropMidnight3_1000x.jpg?v=1674866893",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropMidnight1_150x.jpg?v=1674866893",
+            },
+            {
+                color: "Black",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropBlack1_1000x.jpg?v=1674866846",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropBlack3_1000x.jpg?v=1674866846",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/StratusLSCropBlack1_150x.jpg?v=1674866846",
+            },
+        ]
+    },
+    {
+        title: "VARSITY SKIRT",
+        description: "Women's Compression Lined Mesh Skirt",
+        type: "skirt",
+        gender: "women",
+        price: 48.00,
+        sizes: ["S", "M", "L", "XL"],
+        colorways: [
+            {
+                color: "Crimson",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/VarsityBURGUNDY30_1000x.jpg?v=1661448904",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/VarsityBURGUNDY34_1000x.jpg?v=1665766351",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/VarsityBURGUNDY30_150x.jpg?v=1661448904",
+            },
+            {
+                color: "White",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/VarsityWHITE32_1000x.jpg?v=1661450202",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/VarsityWHITE36_1000x.jpg?v=1665766699",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/VarsityWHITE32_150x.jpg?v=1661450202",
+            },
+            {
+                color: "Black",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/VarsityBLACK50_1_1000x.jpg?v=1661455329",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/kelseyblack_1000x.jpg?v=1665766310",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/VarsityBLACK50_1_150x.jpg?v=1661455329",
+            },
+            {
+                color: "Pink",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/PINK12_1000x.jpg?v=1661449678",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/PINK16_1000x.jpg?v=1665766675",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/PINK12_150x.jpg?v=1661449678",
+            },
+            {
+                color: "Tan",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/VarsityBeige32_1000x.jpg?v=1661449845",
+                imgSideURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/VarsityBeige36_1000x.jpg?v=1665766687",
+                imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/VarsityBeige32_150x.jpg?v=1661449845",
+            },
+        ]
+    },
 ]
 
 export { data }
