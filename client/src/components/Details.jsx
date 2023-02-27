@@ -2,20 +2,52 @@ import React, { useEffect, useState, useContext } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
 import { db } from '../Firebase'
 import { getDoc, doc } from 'firebase/firestore'
-// import { CartContext } from "../App"
+import { CartContext } from "../App"
+import Cookies from "js-cookie";
 
 function Details() {
-    //const cartContext = useContext(CartContext);
 
+    const cartContext = useContext(CartContext);
     const [searchParams] = useSearchParams();
     const [product, setProduct] = useState(null)
     const [selectedSize, setSelectedSize] = useState("")
     const [color, setColor] = useState(null)
     const { id } = useParams()
 
-    function addToCart() {
+    const addToCart = () => {
+        const newItem = {
+            Titre: product.title,
+            Cover: product.colorways.find(colorway => colorway.color.toLowerCase().replace(/\s/g, '') === color.toLowerCase()).imgURL,
+            Color: color,
+            Size: selectedSize,
+            Quantity: 1,
+            Price: product.price.toFixed(2)
+        };
 
-    }
+        // Check si il y a deja le meme item dans le panier
+        const existingItemIndex = cartContext.cartItems.findIndex(
+            (item) => item.Titre === product.title && item.Size === selectedSize && item.Color === color
+        );
+
+        if (existingItemIndex >= 0) {
+            // Ajoute 1 à la quantité de l'item existant
+            const updatedCartItems = [...cartContext.cartItems];
+            updatedCartItems[existingItemIndex].Quantity += 1;
+            cartContext.setCartItems(updatedCartItems);
+        } else {
+            // Sinon, ajoute nouvel item au panier
+            cartContext.setCartItems([...cartContext.cartItems, newItem]);
+        }
+    };
+
+    // Save cart data to cookies whenever the cartItems state changes
+    useEffect(() => {
+        Cookies.set("cartItems", JSON.stringify(cartContext.cartItems));
+    }, [cartContext.cartItems]);
+
+    // function addToCart() {
+
+    // }
 
 
     useEffect(() => {

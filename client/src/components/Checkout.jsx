@@ -29,9 +29,18 @@ function Checkout() {
     // Calculate total price
     useEffect(() => {
         if (cartContext.cartItems.length > 0) {
-            const totalPrice = cartContext.cartItems.reduce((acc, item) => acc + parseFloat(item.Price), 0);
+            const totalPrice = cartContext.cartItems.reduce((acc, item) => acc + (parseFloat(item.Price) * item.Quantity), 0);
             setsubtotalPrice(totalPrice.toFixed(2));
-            cartContext.settotalPrice((totalPrice + 20).toFixed(2))
+            if (totalPrice < 100) {
+                cartContext.settotalPrice((totalPrice + 20).toFixed(2))
+            } else {
+                cartContext.settotalPrice((totalPrice).toFixed(2))
+            }
+
+        } else {
+            const totalPrice = 0
+            setsubtotalPrice(totalPrice.toFixed(2));
+            cartContext.settotalPrice((totalPrice).toFixed(2))
         }
     }, [cartContext.cartItems]);
 
@@ -80,7 +89,7 @@ function Checkout() {
                                     Subtotal: <span className="ml-2 text-white">${subtotalPrice}</span></div>
                                 <div
                                     className="flex items-center w-full py-4 text-sm font-semibold border-b border-neutral-500 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0 text-white">
-                                    Shipping: <span className="ml-2 text-white">$20</span></div>
+                                    Shipping: <span className="ml-2 text-white">${(cartContext.cartItems.length > 0 && subtotalPrice < 100) ? "20.00" : "0.00"}</span></div>
                                 <div
                                     className="flex items-center w-full py-4 text-sm font-semibold border-b border-neutral-500 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0 text-white">
                                     Total: <span className="ml-2 text-white">${cartContext.totalPrice}</span></div>
