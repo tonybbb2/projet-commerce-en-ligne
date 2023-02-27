@@ -179,8 +179,8 @@ const data = [
         colorways: [
             {
                 color: "Chocolate",
-                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyRestockMay310129_1000x.jpg?v=1654661505",
-                imgSideURL:  "https://cdn.shopify.com/s/files/1/0667/0133/products/SeamlessandSurface93_1000x.jpg?v=1668811061",
+                imgURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyShort4.5Chocolate5_1000x.jpg?v=1676746730",
+                imgSideURL:  "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyShort4.5Chocolate3_1000x.jpg?v=1673378038",
                 imgIconURL: "https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyShort4.5Chocolate2_400x.jpg?v=1673378015",
             },
             {

@@ -62,7 +62,9 @@ function Details() {
 
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 static">
                             {/*  Title and description */}
-                            <h2 className="text-sm title-font text-gray-500 tracking-widest">{color}</h2>
+                            <h2 className="text-sm title-font text-gray-500 tracking-widest">
+                                {product.colorways.find(colorway => colorway.color.toLowerCase().replace(/\s/g, '') === color.toLowerCase()).color}
+                            </h2>
                             <h1 className="text-gray-300 text-3xl title-font font-medium mb-5">{product.title}</h1>
                             <p className="leading-relaxed">{product.description}</p>
 
