@@ -4,6 +4,7 @@ import { db } from '../Firebase'
 import { getDoc, doc } from 'firebase/firestore'
 import { CartContext } from "../App"
 import Cookies from "js-cookie";
+import { Alert } from "@material-tailwind/react";
 
 function Details() {
 
@@ -13,8 +14,15 @@ function Details() {
     const [selectedSize, setSelectedSize] = useState("")
     const [color, setColor] = useState(null)
     const { id } = useParams()
+    const [showNotification, setShowNotification] = useState(false);
 
     const addToCart = () => {
+
+        setShowNotification(true);
+        setTimeout(() => {
+            setShowNotification(false);
+        }, 2000);
+
         const newItem = {
             Titre: product.title,
             Cover: product.colorways.find(colorway => colorway.color.toLowerCase().replace(/\s/g, '') === color.toLowerCase()).imgURL,
@@ -74,6 +82,13 @@ function Details() {
 
     return (
         <section className="text-gray-400 body-font overflow-hidden">
+            {showNotification && (
+                <div className="fixed bottom-1/8 left-1/2 transform -translate-x-1/2 w-8/12 rounded-lg shadow-md py-6 px-8 z-50">
+                    <Alert color="green" className="text-lg text-white text-center">
+                        Item added to cart
+                    </Alert>
+                </div>
+            )}
             <div className="container px-5 py-24 mx-auto">
                 {
                     product &&
