@@ -35,16 +35,16 @@ const Toppicks = () => {
                 <div className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative px-30 lg:px-60 mt-4'>
                 {
                         product && product.docs.map(doc => {
-                            const product = doc.data()
+                            const productSSS = doc.data()
 
-                            return product.colorways.map(colorway =>
+                            return productSSS.colorways.map(colorway =>
                                 <Cards
                                 cover={colorway.imgURL}
                                     key={`${doc.id}:${colorway.color.replace(/\s/g, '').toLowerCase()}`}
                                     id={doc.id}
                                     color={colorway.color.replace(/\s/g, '').toLowerCase()}
-                                    title={'Amplify Short 4"5'}
-                                    pricing={52.00} label={'🥇'}
+                                    title={doc.data().title}
+                                    pricing={doc.data().price} label={'🥇'}
                                 />
                             )
                         })

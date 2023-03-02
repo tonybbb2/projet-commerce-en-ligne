@@ -47,8 +47,8 @@ const Trending = () => {
                                     key={`${doc.id}:${colorway.color.replace(/\s/g, '').toLowerCase()}`}
                                     id={doc.id}
                                     color={colorway.color.replace(/\s/g, '').toLowerCase()}
-                                    title={'Amplify Short 4"5'}
-                                    pricing={52.00} label={'🔥'}
+                                    title={doc.data().title}
+                                    pricing={doc.data().price}  label={'🔥'}
                                 />
                             )
                         })

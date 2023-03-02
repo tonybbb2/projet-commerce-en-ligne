@@ -25,15 +25,15 @@ function Login() {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen">
-            <div className="w-full max-w-xs">
-                <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded-lg shadow-md">
-                    <h1 className=""></h1>
-                    <div className="mb-4">
-                        <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="email">
-                            Email
+            <div className="w-full max-w-md">
+                <form className="px-8 pt-6 pb-8 mb-4 rounded-lg shadow-md">
+                    <h1 className="p-4  text-[18px] text-center font-extrabold text-[#c9c9c9]">LOG INTO MY ACCOUNT</h1>
+                    <div className="mb-4 mt-4">
+                        <label className="block mb-2 text-xs font-bold text-white" htmlFor="email">
+                            Email Address :
                         </label>
                         <input
-                            className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline placeholder:text-sm"
+                            className="w-full px-3 py-2 leading-tight text-white border bg-[#1A1A1A] rounded-md shadow appearance-none focus:outline-none focus:shadow-outline placeholder:text-sm"
                             id="email"
                             type="email"
                             placeholder="Email"
@@ -42,28 +42,28 @@ function Login() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="password">
-                            Password
+                        <label className="block mb-2 text-xs font-bold text-white" htmlFor="password">
+                            Password :
                         </label>
                         <input
-                            className="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline placeholder:text-sm"
+                            className="w-full px-3 py-2 mb-3 leading-tight text-white border bg-[#1A1A1A] rounded-md shadow appearance-none focus:outline-none focus:shadow-outline placeholder:text-sm"
                             id="password"
                             type="password"
-                            placeholder="*******"
+                            placeholder="password"
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                         />
                     </div>
                     <div className="flex items-center justify-between mb-2">
                         <button
-                            className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                            className="px-4 py-2 w-full font-extrabold text-md bg-[#c9c9c9] rounded-xl focus:outline-none focus:shadow-outline"
                             type="button"
                             onClick={handleSubmit}
                         >
-                            Sign In
+                            LOG IN
                         </button>
                     </div>
-                    <Link to={"/register"} className="text-xs text-blue-600 underline hover:no-underline">Don't have an account?</Link>
+                    <Link to={"/register"} className="text-xs text-[#c9c9c9] hover:no-underline mx-auto">new? <span className="font-sm font-semibold">Create An Account</span></Link>
                 </form>
             </div>
         </div>

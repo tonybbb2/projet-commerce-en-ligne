@@ -34,14 +34,15 @@ function Register() {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen">
-            <div className="w-full max-w-xs">
-                <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded-lg shadow-md" onSubmit={handleSubmit}>
+            <div className="w-full max-w-md">
+                <form className="px-8 pt-6 pb-8 mb-4 rounded-lg shadow-md" onSubmit={handleSubmit}>
+                    <h1 className="p-4  text-[18px] text-center font-extrabold text-[#c9c9c9]">REGISTER</h1>
                     <div className="mb-4">
-                        <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="username">
+                        <label className="block mb-2 text-xs font-bold text-white" htmlFor="username">
                             Username
                         </label>
                         <input
-                            className="w-full px-3 py-2 text-sm font-bold leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline placeholder:text-sm"
+                            className="w-full px-3 py-2 text-sm font-bold leading-tight bg-[#1A1A1A]  text-white border rounded-md shadow appearance-none focus:outline-none focus:shadow-outline placeholder:text-sm"
                             id="username"
                             type="user"
                             placeholder="Username"
@@ -50,11 +51,11 @@ function Register() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="email">
+                        <label className="block mb-2 text-xs font-bold text-white" htmlFor="email">
                             Email
                         </label>
                         <input
-                            className="w-full px-3 py-2 text-sm font-bold leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline placeholder:text-sm"
+                            className="w-full px-3 py-2 text-sm font-bold leading-tight bg-[#1A1A1A]  text-white border rounded-md shadow appearance-none focus:outline-none focus:shadow-outline placeholder:text-sm"
                             id="email"
                             type="email"
                             placeholder="Email"
@@ -63,11 +64,11 @@ function Register() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="password">
+                        <label className="block mb-2 text-xs font-bold text-white" htmlFor="password">
                             Password
                         </label>
                         <input
-                            className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline placeholder:text-sm"
+                            className="w-full px-3 py-2 leading-tight text-white  bg-[#1A1A1A] border rounded-md shadow appearance-none focus:outline-none focus:shadow-outline placeholder:text-sm"
                             id="password"
                             type="password"
                             placeholder="*******"
@@ -76,11 +77,11 @@ function Register() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="confirmPassword">
+                        <label className="block mb-2 text-xs font-bold text-white" htmlFor="confirmPassword">
                             Confirm password
                         </label>
                         <input
-                            className="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline placeholder:text-sm"
+                            className="w-full px-3 py-2 mb-3 leading-tight text-white bg-[#1A1A1A] border rounded-md shadow appearance-none focus:outline-none focus:shadow-outline placeholder:text-sm"
                             id="confirmPassword"
                             type="password"
                             placeholder="*******"
@@ -90,10 +91,11 @@ function Register() {
                     </div>
                     <div className="flex items-center justify-between">
                         <button
-                            className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline">
+                            className="px-4 py-2 w-full font-extrabold text-md uppercase text-black bg-[#c9c9c9] rounded-xl focus:outline-none focus:shadow-outline">
                             Register
                         </button>
                     </div>
+                    <Link to={"/login"} className="text-xs py-2 text-[#c9c9c9] hover:no-underline mx-auto">Already have an account?<span className="font-sm font-semibold">Log In</span></Link>
                 </form>
             </div>
         </div>
