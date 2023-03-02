@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
+import  Footer  from "./components/Footer";
 import { Login } from "./components/Login"
 import { Register } from "./components/Register"
 import { AuthContextProvider } from "./components/context/AuthContext";
@@ -51,6 +52,7 @@ function App() {
             <Route path="/collections" element={<Collections />} />
             <Route path="/products/:gender" element={<ProductsByGender />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </CartContext.Provider>
     </AuthContextProvider>
