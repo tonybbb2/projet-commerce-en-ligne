@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { CartContext } from "../App"
+import { useNavigate } from "react-router-dom";
+import { Alert } from "@material-tailwind/react";
 
 export const MyCheckoutForm = () => {
 
@@ -10,6 +12,11 @@ export const MyCheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
     const totalPrice = Math.round(cartContext.totalPrice * 100);
+    const navigate = useNavigate();
+    const [showNotification, setShowNotification] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+
 
 
     const handleEmailChange = (event) => {
@@ -36,93 +43,190 @@ export const MyCheckoutForm = () => {
 
 
     // Make the payment after filling the form properly
-    const makePayment = async () => {
+    const makePayment = async (event) => {
+        event.preventDefault(); // prevent form submission
+
+        // Validate form fields
+        const firstName = event.target.elements.firstName.value;
+        if (!firstName) {
+            setErrorMessage("Please enter your first name")
+            setShowNotification(true);
+            setTimeout(() => {
+                setShowNotification(false);
+            }, 5000);
+            return;
+        }
+
+        const lastName = event.target.elements.lastName.value;
+        if (!lastName) {
+            setErrorMessage("Please enter your last name")
+            setShowNotification(true);
+            setTimeout(() => {
+                setShowNotification(false);
+            }, 5000);
+            return;
+        }
+
+        const email = event.target.elements.email.value;
+        if (!email || !/\S+@\S+\.\S+/.test(email)) {
+            setErrorMessage("Please enter a valid email address")
+            setShowNotification(true);
+            setTimeout(() => {
+                setShowNotification(false);
+            }, 5000);
+            return;
+        }
+
+        const address = event.target.elements.address.value;
+        if (!address) {
+            setErrorMessage("Please enter your address")
+            setShowNotification(true);
+            setTimeout(() => {
+                setShowNotification(false);
+            }, 5000);
+            return;
+        }
+
+        const city = event.target.elements.city.value;
+        if (!city) {
+            setErrorMessage("Please enter your city")
+            setShowNotification(true);
+            setTimeout(() => {
+                setShowNotification(false);
+            }, 5000);
+            return;
+        }
+
+        const postcode = event.target.elements.postcode.value;
+        if (!postcode || !/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/.test(postcode)) {
+            setErrorMessage("Please enter a valid postcode")
+            setShowNotification(true);
+            setTimeout(() => {
+                setShowNotification(false);
+            }, 5000);
+            return;
+        }
+
+        const nameOnCard = event.target.elements["Name on card"].value;
+        if (!nameOnCard) {
+            setErrorMessage("Please enter the name on your card")
+            setShowNotification(true);
+            setTimeout(() => {
+                setShowNotification(false);
+            }, 5000);
+            return;
+        }
+
+        // Validate CardElement
+        const cardElement = elements.getElement(CardElement);
+        const cardValidationResult = await stripe.createToken(cardElement);
+        if (cardValidationResult.error) {
+            setErrorMessage(cardValidationResult.error.message)
+            setShowNotification(true);
+            setTimeout(() => {
+                setShowNotification(false);
+            }, 5000);
+            return;
+        }
+
         await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: elements.getElement(CardElement),
             },
         });
+
+        navigate('/');
     }
 
     return (
-        <form className="justify-center w-full mx-auto" id="payment-form" onSubmit={makePayment}>
-            <div className="rounded-xl p-[2rem] pb-[1rem] border border-secondary/20 shadow-xl transition-all duration-[1s] ease-out-expo active:scale-95 my-5 border-neutral-500">
-                <div className="space-x-0 lg:flex lg:space-x-4">
-                    <div className="w-full lg:w-1/2">
-                        <label className="block mb-3 text-sm font-semibold text-neutral-300">First
-                            Name</label>
-                        <input name="firstName" type="text" placeholder="First Name"
-                            className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
+        <div>
+            {showNotification && (
+                <div className="fixed bottom-1/8 left-1/2 transform -translate-x-1/2 w-7/12 rounded-lg shadow-md py-6 px-8 z-50">
+                    <Alert color="red" className="text-lg text-white text-center">
+                        {errorMessage}
+                    </Alert>
+                </div>
+            )}
+            <form className="justify-center w-full mx-auto" id="payment-form" onSubmit={makePayment}>
+                <div className="rounded-xl p-[2rem] pb-[1rem] border border-secondary/20 shadow-xl transition-all duration-[1s] ease-out-expo active:scale-95 my-5 border-neutral-500">
+                    <div className="space-x-0 lg:flex lg:space-x-4">
+                        <div className="w-full lg:w-1/2">
+                            <label className="block mb-3 text-sm font-semibold text-neutral-300">First
+                                Name</label>
+                            <input name="firstName" type="text" placeholder="First Name"
+                                className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
+                        </div>
+                        <div className="w-full lg:w-1/2 ">
+                            <label className="block mb-3 text-sm font-semibold text-neutral-300">Last
+                                Name</label>
+                            <input name="lastName" type="text" placeholder="Last Name"
+                                className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
+                        </div>
                     </div>
-                    <div className="w-full lg:w-1/2 ">
-                        <label className="block mb-3 text-sm font-semibold text-neutral-300">Last
-                            Name</label>
-                        <input name="Last Name" type="text" placeholder="Last Name"
-                            className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
+                    <div className="mt-4">
+                        <div className="w-full">
+                            <label
+                                className="block mb-3 text-sm font-semibold text-neutral-300">Email</label>
+                            <input type="email" id="email" value={email} onChange={handleEmailChange} placeholder="Email"
+                                className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
+                        </div>
+                    </div>
+                    <div className="mt-4">
+                        <div className="w-full">
+                            <label
+                                className="block mb-3 text-sm font-semibold text-neutral-300">Address</label>
+                            <input name="address" type="text" placeholder="Address"
+                                className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
+                        </div>
+                    </div>
+                    <div className="space-x-0 lg:flex lg:space-x-4 mt-4">
+                        <div className="w-full lg:w-1/2">
+                            <label
+                                className="block mb-3 text-sm font-semibold text-neutral-300">City</label>
+                            <input name="city" type="text" placeholder="City"
+                                className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
+                        </div>
+                        <div className="w-full lg:w-1/2 ">
+                            <label className="block mb-3 text-sm font-semibold text-neutral-300">
+                                Postcode</label>
+                            <input name="postcode" type="text" placeholder="Post Code"
+                                className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
+                        </div>
                     </div>
                 </div>
-                <div className="mt-4">
-                    <div className="w-full">
-                        <label
-                            className="block mb-3 text-sm font-semibold text-neutral-300">Email</label>
-                        <input type="email" id="email" value={email} onChange={handleEmailChange} placeholder="Email"
-                            className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
+                <h2 className="font-bold md:text-xl text-heading text-white">Payement Informations
+                </h2>
+                <div className="rounded-xl p-[2rem] pb-[1rem] border border-secondary/20 shadow-xl transition-all duration-[1s] ease-out-expo active:scale-95 my-5 border-neutral-500">
+                    <div>
+                        <div className="w-full">
+                            <label
+                                className="block mb-3 text-sm font-semibold text-neutral-300">Name on card</label>
+                            <input name="Name on card" type="text" placeholder="Name on card"
+                                className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
+                        </div>
                     </div>
-                </div>
-                <div className="mt-4">
-                    <div className="w-full">
-                        <label
-                            className="block mb-3 text-sm font-semibold text-neutral-300">Address</label>
-                        <input name="Address" type="text" placeholder="Address"
-                            className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
-                    </div>
-                </div>
-                <div className="space-x-0 lg:flex lg:space-x-4 mt-4">
-                    <div className="w-full lg:w-1/2">
-                        <label
-                            className="block mb-3 text-sm font-semibold text-neutral-300">City</label>
-                        <input name="city" type="text" placeholder="City"
-                            className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
-                    </div>
-                    <div className="w-full lg:w-1/2 ">
-                        <label className="block mb-3 text-sm font-semibold text-neutral-300">
-                            Postcode</label>
-                        <input name="postcode" type="text" placeholder="Post Code"
-                            className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
-                    </div>
-                </div>
-            </div>
-            <h2 className="font-bold md:text-xl text-heading text-white">Payement Informations
-            </h2>
-            <div className="rounded-xl p-[2rem] pb-[1rem] border border-secondary/20 shadow-xl transition-all duration-[1s] ease-out-expo active:scale-95 my-5 border-neutral-500">
-                <div>
-                    <div className="w-full">
-                        <label
-                            className="block mb-3 text-sm font-semibold text-neutral-300">Name on card</label>
-                        <input name="Name on card" type="text" placeholder="Name on card"
-                            className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 text-neutral-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" />
-                    </div>
-                </div>
-                <div className="mt-4">
-                    <div className="w-full">
-                        <label
-                            className="block mb-3 text-sm font-semibold text-neutral-300">Card number</label>
-                        <CardElement id="card-element" className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" options={{
-                            style: {
-                                base: {
-                                    color: '#D4D4D4',
+                    <div className="mt-4">
+                        <div className="w-full">
+                            <label
+                                className="block mb-3 text-sm font-semibold text-neutral-300">Card number</label>
+                            <CardElement id="card-element" className="w-full px-4 py-3 text-sm border bg-neutral-800 border-neutral-500 placeholder-neutral-400 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-green-500" options={{
+                                style: {
+                                    base: {
+                                        color: '#D4D4D4',
+                                    },
                                 },
-                            },
+                                hidePostalCode: true
 
-                        }} />
+                            }} />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="mt-6">
-                <button
-                    id="submit" className="w-full px-6 py-2 text-white font-bold rounded-lg bg-green-500 hover:bg-green-700">Process</button>
-            </div>
-        </form>
+                <div className="mt-6">
+                    <button
+                        id="submit" className="w-full px-6 py-2 text-white font-bold rounded-lg bg-green-500 hover:bg-green-700" disabled={totalPrice !== 0 ? false : true}>Process</button>
+                </div>
+            </form>
+        </div>
 
     );
 };
