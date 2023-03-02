@@ -23,19 +23,6 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, settotalPrice] = useState(0);
 
-  // useEffect(() => {
-  //   let id = Cookies.get('cart');
-  //   if (!id) {
-  //     let id = ('cart' + uuidv4()).replaceAll("-", "");
-  //     Cookies.set('cart', id, { expires: 365 });
-  //   }
-  //   setcartId(id);
-  // }, []);
-
-  // useEffect(() => {
-  //   //console.log(cartId);
-  // }, [cartId]);
-
 
   const cartIdContext = { cartId, setcartId, cart, setCart, cartItems, setCartItems, totalPrice, settotalPrice }
   return (
