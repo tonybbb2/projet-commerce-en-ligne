@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { AiOutlineShoppingCart, AiOutlineTwitter } from 'react-icons/ai';
 import { BsSearch, BsFillInfoCircleFill, BsInstagram, BsFacebook } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
-import { AiOutlineMenu, AiOutlineClose, AiFillTwitterCircle, AiOutlineYoutube } from 'react-icons/ai';
+import { AiOutlineMenu, AiOutlineClose, AiFillTwitterCircle, AiOutlineYoutube, AiOutlineSearch } from 'react-icons/ai';
 import { FiHelpCircle } from 'react-icons/fi'
 import { FaTruckLoading, FaShoppingBag } from 'react-icons/fa'
 import { GiReturnArrow } from 'react-icons/gi'
@@ -19,6 +19,7 @@ export const Navbar = () => {
     const [product, setProduct] = useState(null)
     const [menproduct, setmenProduct] = useState(null)
     const [allbras, setBra] = useState(null)
+    const [querySearch, setQuerySearch] = useState("")
 
     const handleNav = () => {
         setNav(!nav);
@@ -119,8 +120,14 @@ export const Navbar = () => {
                         <p className='ml-4 uppercase text-sm hover:border-t' onMouseOver={handleExpandWomen}>Women</p>
                     </div>
                     <div className='flex'>
+                        <input type="text" className='rounded mr-2 text-black' value={querySearch} onChange={e => setQuerySearch(e.target.value)} />
 
-                        <Link to={'/checkout'}>                        
+                        <Link to={`/products?query=${querySearch.toLowerCase()}`} >
+                            <AiOutlineSearch className='text-lg md:text-xl mr-3 hidden md:block' />
+                        </Link>
+
+
+                        <Link to={'/checkout'}>
                             <AiOutlineShoppingCart className='text-lg md:text-xl mr-2 hidden md:block' />
                         </Link>
 

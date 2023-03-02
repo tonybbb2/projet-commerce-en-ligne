@@ -55,7 +55,7 @@ function AllProducts() {
         } else {
             setFilteredProducts(products)
         }
-    }, [products])
+    }, [products, queryURL])
 
     return (
         <section>
