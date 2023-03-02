@@ -50,7 +50,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/details/:id" element={<Details />} />
-            <Route path="/collections" element={<Collections />} />
+            <Route path="/collections/:type" element={<Collections />} />
             <Route path="/products/:gender" element={<ProductsByGender />} />
             <Route path="/products" element={<AllProducts />} />
           </Routes>

@@ -18,7 +18,6 @@ export const Navbar = () => {
     const [expandwomen, setExpandWomen] = useState(false)
     const [product, setProduct] = useState(null)
     const [menproduct, setmenProduct] = useState(null)
-    const [allbras, setBra] = useState(null)
     const [querySearch, setQuerySearch] = useState("")
 
     const handleNav = () => {
@@ -44,57 +43,7 @@ export const Navbar = () => {
         }
         window.addEventListener('scroll', handleScroll)
 
-
-        const clothesRef = doc(db, 'clothes/urls')
-
-        const fetchClothes = async () => {
-            const bra = await getDoc(clothesRef)
-            if (bra.exists()) {
-                return ('Document data:', bra.data());
-            } else {
-                return ('No such document!');
-            }
-        }
-
-        const result = fetchClothes()
-            .catch(console.error)
-        result.then(value => {
-            //console.log(value)
-            setProduct(value)
-
-        })
-
-
-        // combine bra_big_image and bra_small_image into one array
-        const b = product?.Bra_big_image.concat(product?.Bra_small_icon)
-        setBra(b)
-
-        //console.log(allbras)
-
     }, [])
-
-    useEffect(() => {
-        // Function to fetch and set the product detail
-        const clothesRef = doc(db, 'clothes/urls_homme')
-
-        const fetchClothes = async () => {
-            //const braPath = doc(clothesRef, 'Bra_small_icon')
-            const bra = await getDoc(clothesRef)
-            if (bra.exists()) {
-                return ('Document data:', bra.data());
-            } else {
-                return ('No such document!');
-            }
-        }
-
-        const result = fetchClothes()
-            .catch(console.error)
-        result.then(value => {
-            //console.log(value)
-            setmenProduct(value)
-        })
-    }, [])
-
 
     return (
         <div>
@@ -153,28 +102,44 @@ export const Navbar = () => {
                                         <p className='font-extrabold text-white uppercase'>MEN</p>
                                         <ul className="space-y-4 text-slate-300 list-none list-inside text-xs p-10">
                                             <li>
+                                                <Link to="/collections/shorts">
                                                 Shorts
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/joggers">
                                                 Joggers
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/ShortSleeves">
                                                 Short Sleeves
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/Tanks">
                                                 Tank Tops
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/stringers">
                                                 Stringers
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/LongSleeves">
                                                 Long Sleeves
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/hoodies">
                                                 Hoodies & Jackets
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/accessories">
                                                 Accessories
+                                                </Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -182,28 +147,44 @@ export const Navbar = () => {
                                         <p className='font-extrabold text-white uppercase '>WOMEN</p>
                                         <ul className="space-y-4 text-slate-300 list-none list-inside text-xs p-10">
                                             <li>
+                                                <Link to="/collections/SportBras">
                                                 Sports Bras
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/shortshorts">
                                                 Shorts
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/leggings">
                                                 Leggings
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/Tanks">
                                                 Tank Tops
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/LongSleeves">
                                                 Shirts & Crops
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/hoodies">
                                                 Hoodies & Jackets
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/Joggers">
                                                 Joggers
+                                                </Link>
                                             </li>
                                             <li>
+                                                <Link to="/collections/skirt">
                                                 Dresses & Skirts
+                                                </Link>
                                             </li>
                                         </ul></div>
                                 </div>
@@ -283,20 +264,22 @@ export const Navbar = () => {
                                     <div>
                                         <ul className="space-y-2 text-slate-300 list-none text-left list-inside text-md p-10">
                                             <li>
-                                                <Link to="/collections" state={{ category: 'Shorts', data: menproduct.short_shorts_big }}>
+                                                <Link to="/collections/shorts">
                                                     Shorts
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to="/collections" state={{ category: 'Joggers', data: menproduct.Joggers[0].joggers_big }}>
+                                                <Link to="/collections/joggers">
                                                     Joggers
                                                 </Link>
                                             </li>
                                             <li>
-                                                Short Sleeves
+                                                <Link to="/collections/shortsleeve">
+                                                    Short Sleeves
+                                                </Link>
                                             </li>
                                             <li>
-                                                <Link to="/collections" state={{ category: 'Tank Tops', data: menproduct.Tanks[0].tanks_big }}>
+                                                <Link to="/collections/tanks">
                                                     Tank Tops
                                                 </Link>
                                             </li>
@@ -304,20 +287,24 @@ export const Navbar = () => {
                                         </ul></div>
                                     <div><ul className="space-y-2 text-slate-300 list-none   text-left list-inside text-md p-10">
                                         <li>
-                                            Shirts
+                                            <Link to="/collections/shirts">
+                                                Shirts
+                                            </Link>
                                         </li>
                                         <li>
-                                            <Link to="/collections" state={{ category: 'Hoodies & Jackets', data: menproduct.hoodie_big }}>
+                                            <Link to="/collections/hoodie">
                                                 Hoodies & Jackets
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to="/collections" state={{ category: 'Joggers', data: menproduct.joggers_big }}>
-                                                Joggers
+                                            <Link to="/collections/swimtrunk">
+                                                Swim Trunks
                                             </Link>
                                         </li>
                                         <li>
-                                            Dresses & Skirts
+                                            <Link to="/collections/Skirts">
+                                                Dresses & Skirts
+                                            </Link>
                                         </li>
 
                                     </ul></div>
@@ -379,39 +366,46 @@ export const Navbar = () => {
                                     <div>
                                         <ul className="space-y-2 text-slate-300 list-none text-left list-inside text-md p-10">
                                             <li>
-                                                <Link to="/collections" state={{ category: 'Sports Bras', data: product.Bra_big_image }}>
+                                                <Link to="/collections/sportbras">
                                                     Sports Bras
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to="/collections" state={{ category: 'Shorts', data: product.short_big_image }}>
+                                                <Link to="/collections/shortshorts">
                                                     Shorts
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to="/collections" state={{ category: 'Leggings', data: product.Leggings_big_image }}>
+                                                <Link to="/collections/leggings">
                                                     Leggings
                                                 </Link>
                                             </li>
                                             <li>
-                                                Tank Tops
+                                                <Link to="/collections/tanktops">
+                                                    Tank Tops
+                                                </Link>
                                             </li>
 
                                         </ul></div>
                                     <div><ul className="space-y-2 text-slate-300 list-none   text-left list-inside text-md p-10">
 
-                                        <li><Link to="/collections" state={{ category: 'Long Sleeve', data: product.LongSleeve_big_image }}>
-                                            Long Sleeve
-                                        </Link>
+                                        <li>
+                                            <Link to="/collections/longsleeve">
+                                                Long Sleeve
+                                            </Link>
                                         </li>
                                         <li>
-                                            Hoodies & Jackets
+                                            <Link to="/collections/hoodies">
+                                                Hoodies & Jackets
+                                            </Link>
                                         </li>
                                         <li>
-                                            Joggers
+                                            <Link to="/collections/joggers">
+                                                Joggers
+                                            </Link>
                                         </li>
                                         <li>
-                                            <Link to="/collections" state={{ category: 'Dresses & Skirts', data: product.Skirt_large_image }}>
+                                            <Link to="/collections/skirt">
                                                 Dresses & Skirts
                                             </Link>
                                         </li>
