@@ -9,6 +9,7 @@ function AllProducts() {
     const [products, setProducts] = useState()
     const [filteredProducts, setFilteredProducts] = useState()
     const queryURL = searchParams.get("query") || ""
+    const queryWords = queryURL.split(" ")
 
     useEffect(() => {
         //Function to fetch and set the products
@@ -35,15 +36,17 @@ function AllProducts() {
                 const p = doc.data()
                 console.log(p)
 
-                if (
-                    p.description.toLowerCase().includes(queryURL.toLowerCase()) ||
-                    p.title.toLowerCase().includes(queryURL.toLowerCase()) ||
-                    p.type.toLowerCase().includes(queryURL.toLowerCase())
-                ) {
-                    return true
-                } else {
-                    return false
+                for (const word of queryWords) {
+                    if (
+                        p.description.toLowerCase().includes(word.toLowerCase()) ||
+                        p.title.toLowerCase().includes(word.toLowerCase()) ||
+                        p.type.toLowerCase().includes(word.toLowerCase())
+                    ) {
+                        return true
+                    }
                 }
+
+                return false
 
             })
 
