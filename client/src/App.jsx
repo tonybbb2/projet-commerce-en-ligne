@@ -11,6 +11,7 @@ import { Cart } from "./components/Cart"
 import { Checkout } from "./components/Checkout"
 import { Collections } from "./components/Collections"
 import { ProductsByGender } from "./components/ProductsByGender";
+import { AllProducts } from "./components/AllProducts";
 import { v4 as uuidv4 } from 'uuid';
 import Cookies from 'js-cookie';
 
@@ -51,6 +52,7 @@ function App() {
             <Route path="/details/:id" element={<Details />} />
             <Route path="/collections" element={<Collections />} />
             <Route path="/products/:gender" element={<ProductsByGender />} />
+            <Route path="/products" element={<AllProducts />} />
           </Routes>
           <Footer />
         </BrowserRouter>

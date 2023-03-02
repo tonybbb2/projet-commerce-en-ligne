@@ -53,10 +53,6 @@ function Details() {
         Cookies.set("cartItems", JSON.stringify(cartContext.cartItems));
     }, [cartContext.cartItems]);
 
-    // function addToCart() {
-
-    // }
-
 
     useEffect(() => {
         //Function to fetch and set the product
