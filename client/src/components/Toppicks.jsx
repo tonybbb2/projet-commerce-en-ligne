@@ -1,7 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Cards from './Cards'
+import { db } from '../Firebase'
+import { getDocs, collection, query, where } from 'firebase/firestore'
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 
 const Toppicks = () => {
+    const [product, setProduct] = useState(null)
+
+    useEffect(() => {
+        //Function to fetch and set the products
+        const fetchClothes = async () => {
+
+            const myQuery = query(collection(db, "clothes2"), where("gender", "==", "men"))
+            const querySnapshot = await getDocs(myQuery);
+
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+            });
+
+            setProduct(querySnapshot)
+        }
+
+        fetchClothes()
+    }, [])
+
     return (
         <section id='Toppicks' className='w-full h-full'>
             <div className='w-full md:h-1/4'>
@@ -10,12 +33,22 @@ const Toppicks = () => {
                     <span className='font-extrabold text-white uppercase  text-md md:text-3xl'>Top Picks</span>
                 </div>
                 <div className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative px-30 lg:px-60 mt-4'>
-                    <Cards cover={'https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyRestockMay310133_1000x.jpg?v=1668811498'} title={'Amplify Short 4"5'} color={'black'} pricing={52.00}/>
-                    <Cards cover={'https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyRestockMay310133_1000x.jpg?v=1668811498'} title={'Amplify Short 4"5'} color={'black'} pricing={52.00}/>
-                    <Cards cover={'https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyRestockMay310133_1000x.jpg?v=1668811498'} title={'Amplify Short 4"5'} color={'black'} pricing={52.00}/>
-                    <Cards cover={'https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyRestockMay310133_1000x.jpg?v=1668811498'} title={'Amplify Short 4"5'} color={'black'} pricing={52.00}/>
-                    <Cards cover={'https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyRestockMay310133_1000x.jpg?v=1668811498'} title={'Amplify Short 4"5'} color={'black'} pricing={52.00}/>
-                    <Cards cover={'https://cdn.shopify.com/s/files/1/0667/0133/products/AmplifyRestockMay310133_1000x.jpg?v=1668811498'} title={'Amplify Short 4"5'} color={'black'} pricing={52.00}/>
+                {
+                        product && product.docs.map(doc => {
+                            const product = doc.data()
+
+                            return product.colorways.map(colorway =>
+                                <Cards
+                                cover={colorway.imgURL}
+                                    key={`${doc.id}:${colorway.color.replace(/\s/g, '').toLowerCase()}`}
+                                    id={doc.id}
+                                    color={colorway.color.replace(/\s/g, '').toLowerCase()}
+                                    title={'Amplify Short 4"5'}
+                                    pricing={52.00} label={'🥇'}
+                                />
+                            )
+                        })
+                    }
                     
                 </div>
             </div>

@@ -5,7 +5,7 @@ import { getDoc, doc, updateDoc, setDoc } from 'firebase/firestore'
 import { CartContext } from "../App"
 import Cookies from "js-cookie";
 
-const Cards = ({ cover, title, color, pricing, label }) => {
+const Cards = ({ id, cover, title, color, pricing, label }) => {
 
     const cartContext = useContext(CartContext);
 
@@ -46,8 +46,8 @@ const Cards = ({ cover, title, color, pricing, label }) => {
 
 
     return (
-        <Link to="/details/1" className='w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block relative p-2'>
-            <img className='w-full h-auto block object-cover rounded-lg' src={cover} alt='tkt' />
+        <Link to={`/details/${id}?color=${color}`} className='w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block relative p-2'>
+            <img className='w-full h-auto block object-cover rounded-lg' src={cover} alt={id} />
             <div className='absolute top-0 left-0 w-full h-full text-black group'>
                 <div className='absolute top-4 left-4'>
                     <button className="bg-gray-500 bg-opacity-10 text-white text-[18px] font-extrabold py-1 px-3 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 mt-2">

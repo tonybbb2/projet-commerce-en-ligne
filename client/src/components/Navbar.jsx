@@ -115,12 +115,15 @@ export const Navbar = () => {
                         <Link to={'/'} className='uppercase font-normal text-[18px] md:text-xl font-sans tracking-tight italic'>FITNESS RATS</Link>
                     </div>
                     <div className='md:flex px-2 hidden md:block mr-[50px] font-extrabold text-gray-300'>
-                        <p className='-ml-[40px] uppercase text-sm hover:border-t' onMouseOver={handleExpand}>Men</p>
+                        <p className='-ml-[30px] uppercase text-sm hover:border-t' onMouseOver={handleExpand}>Men</p>
                         <p className='ml-4 uppercase text-sm hover:border-t' onMouseOver={handleExpandWomen}>Women</p>
                     </div>
                     <div className='flex'>
-                        <BsSearch className='text-lg md:text-xl mr-2 hidden md:block' />
-                        <AiOutlineShoppingCart className='text-lg md:text-xl mr-2 hidden md:block' />
+
+                        <Link to={'/checkout'}>                        
+                            <AiOutlineShoppingCart className='text-lg md:text-xl mr-2 hidden md:block' />
+                        </Link>
+
                         <CgProfile className='text-lg md:text-2xl hidden' />
                         {
                             nav ? <AiOutlineClose onClick={handleNav} className='text-3xl ml-2 md:hidden' /> : <AiOutlineMenu onClick={handleNav} className='text-3xl ml-2 md:hidden' />
@@ -138,8 +141,6 @@ export const Navbar = () => {
                         </div> */}
                         <form>
                             <div className="relative">
-                                <input type="search" id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-900 border-[1px] rounded-lg bg-black backdrop-blur-sm bg-opacity-90 " placeholder="Search ..." required />
-                                <hr className="h-px mx-auto my-8 w-[15rem] sm:w-[35rem] bg-gray-300 border-0"></hr>
                                 <div className='grid grid-cols-2 gap-1'>
                                     <div className='text-center font-bold text-white uppercase'>
                                         <p className='font-extrabold text-white uppercase'>MEN</p>
@@ -275,9 +276,9 @@ export const Navbar = () => {
                                     <div>
                                         <ul className="space-y-2 text-slate-300 list-none text-left list-inside text-md p-10">
                                             <li>
-                                            <Link to="/collections" state={{ category: 'Shorts', data: menproduct.short_shorts_big }}>
-                                                Shorts
-                                            </Link>
+                                                <Link to="/collections" state={{ category: 'Shorts', data: menproduct.short_shorts_big }}>
+                                                    Shorts
+                                                </Link>
                                             </li>
                                             <li>
                                                 <Link to="/collections" state={{ category: 'Joggers', data: menproduct.Joggers[0].joggers_big }}>
