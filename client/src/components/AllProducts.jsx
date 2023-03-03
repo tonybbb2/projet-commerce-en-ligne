@@ -63,7 +63,7 @@ function AllProducts() {
     return (
         <section>
             <div className='w-full h-full'>
-                <h1 className='text-4xl text-center py-12 uppercase font-semibold text-white italic'>Products</h1>
+                <h1 className='text-4xl text-center py-12 uppercase font-semibold text-white'>Results for: <i>{queryURL}</i></h1>
                 <div className='flex justify-center'>
                     <div className='w-3/4 h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 '>
                         {

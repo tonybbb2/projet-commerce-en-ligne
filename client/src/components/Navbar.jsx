@@ -71,7 +71,7 @@ export const Navbar = () => {
                     <div className='flex'>
                         <input type="text" className='rounded mr-2 text-black' value={querySearch} onChange={e => setQuerySearch(e.target.value)} />
 
-                        <Link to={`/products?query=${querySearch.toLowerCase()}`} >
+                        <Link to={`/products?query=${querySearch}`} onClick={() => setQuerySearch("")}>
                             <AiOutlineSearch className='text-lg md:text-xl mr-3 hidden md:block' />
                         </Link>
 
