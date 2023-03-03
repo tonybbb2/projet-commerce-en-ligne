@@ -190,7 +190,7 @@ export const Navbar = () => {
                                 </div>
                                 <hr className="h-px mx-auto my-8 w-[15rem] sm:w-[35rem] bg-gray-300 border-0"></hr>
                                 <div className='grid grid-cols-2'>
-                                    <div className='sm:p-5'>
+                                    <Link to={'/products/men'} className='sm:p-5'>
                                         <div className='w-[165px] sm:w-[275px] inline-block relative'>
                                             <img className='w-full h-auto block object-cover rounded-lg' src='https://cdn.shopify.com/s/files/1/0538/2658/4736/files/01BF-NEW_042-port_800x.jpg?v=1668864373' alt='tkt' />
                                             <div className='absolute top-0 left-0 w-full h-full text-black'>
@@ -201,8 +201,8 @@ export const Navbar = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className='sm:p-5'>
+                                    </Link>
+                                    <Link to={'/products/women'} className='sm:p-5'>
                                         <div className='w-[165px] sm:w-[275px] inline-block relative'>
                                             <img className='w-full h-auto block object-cover rounded-lg' src='https://cdn.shopify.com/s/files/1/0538/2658/4736/files/JanColorBlocks_05-port_800x.jpg?v=1673718145' alt='tkt' />
                                             <div className='absolute top-0 left-0 w-full h-full text-black'>
@@ -213,7 +213,7 @@ export const Navbar = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </Link>
 
                                 </div>
                                 <hr className="h-px mx-auto my-8 w-[15rem] sm:w-[35rem] bg-gray-300 border-0"></hr>
@@ -336,7 +336,7 @@ export const Navbar = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <Link to={'/products/men'}>
                                 <div className='text-center'>
                                     <div className='w-[150px] sm:w-[275px] inline-block relative'>
                                         <img className='w-[170px] md:w-full sm:h-[345px] block object-cover rounded-lg' src='https://cdn.shopify.com/s/files/1/0538/2658/4736/files/01BF-NEW_042-port_800x.jpg?v=1668864373' alt='tkt' />
@@ -349,7 +349,7 @@ export const Navbar = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -439,7 +439,7 @@ export const Navbar = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <Link to={'/products/women'}>
                                 <div className='text-center'>
                                     <div className='w-[150px] sm:w-[275px] inline-block relative'>
                                         <img className='w-full h-auto block object-cover rounded-lg' src='https://cdn.shopify.com/s/files/1/0538/2658/4736/files/JanColorBlocks_05-port_800x.jpg?v=1673718145' alt='tkt' />
@@ -452,7 +452,7 @@ export const Navbar = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         </div>
                     </div>
                 </div>
