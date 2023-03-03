@@ -11,7 +11,7 @@ function Details() {
     const cartContext = useContext(CartContext);
     const [searchParams] = useSearchParams();
     const [product, setProduct] = useState(null)
-    const [selectedSize, setSelectedSize] = useState("")
+    const [selectedSize, setSelectedSize] = useState("S")
     const [color, setColor] = useState(null)
     const { id } = useParams()
     const [showNotification, setShowNotification] = useState(false);
