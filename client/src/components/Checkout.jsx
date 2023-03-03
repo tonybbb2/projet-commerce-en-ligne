@@ -54,8 +54,6 @@ function Checkout() {
             <div className="container p-12 mx-auto">
                 <div className="flex flex-col w-full px-0 mx-auto md:flex-row">
                     <div className="flex flex-col md:w-full ">
-                        <h2 className="font-bold md:text-xl text-heading text-white">Shipping Address
-                        </h2>
                         <Elements stripe={stripePromise}>
                             <MyCheckoutForm />
                         </Elements>
