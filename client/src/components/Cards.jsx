@@ -4,16 +4,24 @@ import { db } from '../Firebase'
 import { getDoc, doc, updateDoc, setDoc } from 'firebase/firestore'
 import { CartContext } from "../App"
 import Cookies from "js-cookie";
+import { Alert } from "@material-tailwind/react";
 
 const Cards = ({ id, cover, title, color, pricing, label }) => {
 
     const cartContext = useContext(CartContext);
+    const [showNotification, setShowNotification] = useState(false);
 
     const hover = (e) => {
         // get the id add
     }
 
     const addToCart = (size) => {
+
+        setShowNotification(true);
+        setTimeout(() => {
+            setShowNotification(false);
+        }, 2000);
+
         const newItem = {
             Titre: title,
             Cover: cover,
@@ -55,6 +63,11 @@ const Cards = ({ id, cover, title, color, pricing, label }) => {
                     </button>
 
                 </div>
+                {showNotification && (
+                    <Alert color="green" className="text-lg text-white text-center">
+                        Item added to cart
+                    </Alert>
+                )}
                 <div id='add' className='absolute bottom-24 hidden lg:block  opacity-0 group-hover:opacity-100 left-[15px] bg-black bg-opacity-90 rounded-2xl text-center  w-[250px] h-[80px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300'>
                     <button className=" text-white text-[16px] font-extrabold py-2">
                         Quick Add +
