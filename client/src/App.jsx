@@ -17,6 +17,7 @@ import Cookies from 'js-cookie';
 
 export const CartContext = React.createContext();
 
+// App component
 function App() {
   const [cartId, setcartId] = useState('cart');
   const [cart, setCart] = useState([]);
@@ -25,6 +26,7 @@ function App() {
 
 
   const cartIdContext = { cartId, setcartId, cart, setCart, cartItems, setCartItems, totalPrice, settotalPrice }
+
   return (
     <AuthContextProvider>
       <CartContext.Provider value={cartIdContext}>

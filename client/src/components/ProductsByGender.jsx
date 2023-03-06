@@ -11,15 +11,8 @@ function ProductsByGender() {
     useEffect(() => {
         //Function to fetch and set the products
         const fetchClothes = async () => {
-
             const myQuery = query(collection(db, "clothes2"), where("gender", "==", gender))
             const querySnapshot = await getDocs(myQuery);
-
-            querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
-            });
-
             setProducts(querySnapshot)
         }
 

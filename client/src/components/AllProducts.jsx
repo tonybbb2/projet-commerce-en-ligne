@@ -11,48 +11,39 @@ function AllProducts() {
     const queryURL = searchParams.get("query") || ""
     const queryWords = queryURL.split(" ")
 
+    //Function to fetch and set the products
     useEffect(() => {
-        //Function to fetch and set the products
         const fetchClothes = async () => {
             const myQuery = query(collection(db, "clothes2"))
-
             const querySnapshot = await getDocs(myQuery);
-
-            querySnapshot.forEach(doc => {
-                //const p = doc.data();
-                //console.log(doc.data());
-            });
-
             setProducts(querySnapshot)
         }
 
         fetchClothes()
     }, [])
 
-    useEffect(() => {
-        const filterProducts = () => {
 
+    // UseEffect called everytime the query URL changes
+    useEffect(() => {
+        // Function that filters the products
+        const filterProducts = () => {
             const newFilteredProducts = products.docs.filter(doc => {
                 const p = doc.data()
-                console.log(p)
 
                 for (const word of queryWords) {
                     if (
                         p.description.toLowerCase().includes(word.toLowerCase()) ||
                         p.title.toLowerCase().includes(word.toLowerCase()) ||
                         p.type.toLowerCase().includes(word.toLowerCase())
-                    ) {
-                        return true
-                    }
+                    ) return true
                 }
-
                 return false
-
             })
 
             setFilteredProducts(newFilteredProducts)
         }
 
+        // If there are products, filter them
         if (products) {
             filterProducts()
         } else {
@@ -66,7 +57,8 @@ function AllProducts() {
                 <h1 className='text-4xl text-center py-12 uppercase font-semibold text-white'>Results for: <i>{queryURL}</i></h1>
                 <div className='flex justify-center'>
                     <div className='w-3/4 h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 '>
-                        {
+                        {   
+                            /* If there are filtered products, map them to BigCards, else map the products to BigCards */
                             filteredProducts &&
                             filteredProducts.map(doc => {
                                 const product = doc.data()

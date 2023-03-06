@@ -16,13 +16,15 @@ function Details() {
     const { id } = useParams()
     const [showNotification, setShowNotification] = useState(false);
 
+    // Function to add item to cart
     const addToCart = () => {
-
+        // Show notification
         setShowNotification(true);
         setTimeout(() => {
             setShowNotification(false);
         }, 2000);
 
+        // Create new item
         const newItem = {
             Titre: product.title,
             Cover: product.colorways.find(colorway => colorway.color.toLowerCase().replace(/\s/g, '') === color.toLowerCase()).imgURL,
@@ -53,7 +55,7 @@ function Details() {
         Cookies.set("cartItems", JSON.stringify(cartContext.cartItems));
     }, [cartContext.cartItems]);
 
-
+    // UseEffect called everytime the id changes
     useEffect(() => {
         //Function to fetch and set the product
         const fetchProduct = async () => {
