@@ -15,13 +15,13 @@ const Toppicks = () => {
             const querySnapshot = await getDocs(myQuery);
 
             querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
                 console.log(doc.id, " => ", doc.data());
             });
 
             setProduct(querySnapshot)
         }
 
+        // run the function
         fetchClothes()
     }, [])
 

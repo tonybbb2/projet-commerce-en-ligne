@@ -20,6 +20,7 @@ export const Navbar = () => {
     const [menproduct, setmenProduct] = useState(null)
     const [querySearch, setQuerySearch] = useState("")
 
+
     const handleNav = () => {
         setNav(!nav);
     }
@@ -33,6 +34,9 @@ export const Navbar = () => {
         setExpandWomen(!expandwomen);
     }
 
+
+    // When the user scrolls the page, execute myFunction 
+    // The function will add the class "sticky" to the navbar when the user reaches its scroll position. Remove "sticky" when they leave the scroll position
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 70) {
